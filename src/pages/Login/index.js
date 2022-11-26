@@ -1,29 +1,29 @@
 function Login() {
     return (
-        <section id="login" class="login">
-            <div class="login-container">
-                <div class="login-content">
-                    <div class="login-header">
+        <section id="login" className="login">
+            <div className="login-container">
+                <div className="login-content">
+                    <div className="login-header">
                         <h1>S-Shop</h1>
                     </div>
-                    <div class="login-form">
+                    <div className="login-form">
                         <form method="get" action="">
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Email" />
+                                <input type="email" className="form-control" id="email" placeholder="Email" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Password" />
+                                <input type="password" className="form-control" id="password" placeholder="Password" />
                             </div>
-                            <div class="form-group form-group-button">
-                                <button id="btn-login" type="submit" class="btn btn-login" value="Login">
+                            <div className="form-group form-group-button">
+                                <button id="btn-login" type="submit" className="btn btn-login" value="Login">
                                     Login
                                 </button>
                             </div>
-                            <div class="form-group form-group-link">
+                            <div className="form-group form-group-link">
                                 <a href="register.html">Create an account</a>
-                                <a href="#">Forgot password?</a>
+                                <a href="/">Forgot password?</a>
                             </div>
                         </form>
                     </div>

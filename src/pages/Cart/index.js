@@ -2,22 +2,22 @@ import data from '~/data';
 function Cart() {
     let products = data.products;
     return (
-        <section class="cart">
-            <div class="cart-container">
-                <div class="product-top">
-                    <div class="product-top-title">
-                        <h3 class="heading-page">
+        <section className="cart">
+            <div className="cart-container">
+                <div className="product-top">
+                    <div className="product-top-title">
+                        <h3 className="heading-page">
                             <a href="index.html">Shop</a> / <span>Cart</span>
                         </h3>
                     </div>
                 </div>
-                <div class="cart-table-head">
+                <div className="cart-table-head">
                     <h3>Shopping Cart</h3>
-                    <button class="btn btn-cart" onclick="clearCart()">
+                    <button className="btn btn-cart" onClick="clearCart()">
                         Clear Cart
                     </button>
                 </div>
-                <div class="cart-table">
+                <div className="cart-table">
                     <table>
                         <thead>
                             <tr>
@@ -49,10 +49,10 @@ function Cart() {
                                         {/* <td>${totalItem.toFixed(3)}đ</td> */}
                                         <td>2đ</td>
                                         <td>
-                                            <button onclick="updateItem({product.id})">Update</button>
+                                            <button onClick="updateItem({product.id})">Update</button>
                                         </td>
                                         <td>
-                                            <button onclick="removeItem({product.id})">Remove</button>
+                                            <button onClick="removeItem({product.id})">Remove</button>
                                         </td>
                                     </tr>
                                 );
@@ -60,15 +60,15 @@ function Cart() {
                         </tbody>
                     </table>
                 </div>
-                <div class="cart-total-price">
+                <div className="cart-total-price">
                     <div id="cart-origin-total"></div>
                     <div id="cart-total-checkout"></div>
                 </div>
-                <div class="cart-button">
-                    <a href="#" class="btn btn-cart" onclick="checkout()">
+                <div className="cart-button">
+                    <a href="/" className="btn btn-cart" onClick="checkout()">
                         Checkout
                     </a>
-                    <a href="product.html" class="btn btn-cart">
+                    <a href="product.html" className="btn btn-cart">
                         Continue Shopping
                     </a>
                 </div>

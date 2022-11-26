@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import data from '~/data';
 function Search() {
-    console.log('Check:', this);
     let products = data.products;
     let search = 'Nguyen Van Son';
     return (
@@ -167,7 +166,7 @@ function Search() {
                                         <img src={product.image} height="80" alt="" />
                                     </div>
                                     <div class="product-body-list-item-title">
-                                        <h4 onclick="viewProduct({product.id})">{product.name}</h4>
+                                        <h4 onClick="viewProduct({product.id})">{product.name}</h4>
                                     </div>
                                     <div class="product-body-list-item-discount">
                                         <p>Giảm {product.discount}%</p>
@@ -178,12 +177,8 @@ function Search() {
                                         </h4>
                                     </div>
                                     <div class="product-body-list-item-button">
-                                        <button class="btn btn-cart" onclick="addItem(${products[i].id})">
-                                            Đặt mua
-                                        </button>
-                                        <button class="btn btn-cart" onclick="viewProduct(${products[i].id})">
-                                            Xem chi tiết
-                                        </button>
+                                        <button class="btn btn-cart">Đặt mua</button>
+                                        <button class="btn btn-cart">Xem chi tiết</button>
                                     </div>
                                 </Link>
                             );

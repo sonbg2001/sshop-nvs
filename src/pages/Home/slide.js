@@ -12,9 +12,9 @@ function Slide() {
                 disableOnInteraction: true,
             }}
         >
-            {images.slide.map((image) => {
+            {images.slide.map((image, index) => {
                 return (
-                    <SwiperSlide>
+                    <SwiperSlide key={index}>
                         <div className="home-slider-wrapper-slide swiper-slide">
                             <div className="home-slider-wrapper-slide-image">
                                 <img src={image} alt="" />

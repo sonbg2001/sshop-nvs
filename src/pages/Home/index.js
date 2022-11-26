@@ -16,11 +16,12 @@ function Home() {
                         <h2 className="heading">Sản phẩm nổi bật</h2>
                     </div>
                     <div id="product-body-list" className="home-featured-product-container-products">
-                        {products.slice(0, 8).map((product) => {
+                        {products.slice(0, 8).map((product, index) => {
                             let totalsale = product.price - (product.price * product.discount) / 100;
                             totalsale = totalsale.toFixed(3);
                             return (
                                 <Link
+                                    key={index}
                                     to={'/product-detail?id=' + product.id}
                                     id={product.id}
                                     className="home-featured-product-container-products-product product-body-list-item"
@@ -29,7 +30,7 @@ function Home() {
                                         <img src={product.image} alt="" />
                                     </div>
                                     <div className="home-featured-product-container-products-product-title product-body-list-item-title">
-                                        <h4 onclick="viewProduct({product.id})">{product.name}</h4>
+                                        <h4>{product.name}</h4>
                                     </div>
                                     <div className="home-featured-product-container-products-product-price-discount product-body-list-item-discount">
                                         <p>Giảm {product.discount}%</p>
@@ -40,12 +41,8 @@ function Home() {
                                         </h4>
                                     </div>
                                     <div className="home-featured-product-container-products-product-button">
-                                        <button className="btn btn-cart" onclick="addItem({product.id})">
-                                            Đặt mua
-                                        </button>
-                                        <button className="btn btn-cart" onclick="viewProduct({product.id})">
-                                            Xem chi tiết
-                                        </button>
+                                        <button className="btn btn-cart">Đặt mua</button>
+                                        <button className="btn btn-cart">Xem chi tiết</button>
                                     </div>
                                 </Link>
                             );
@@ -59,11 +56,12 @@ function Home() {
                         <h2 className="heading">Sản phẩm mới nhất</h2>
                     </div>
                     <div id="product-body-list" className="home-featured-product-container-products">
-                        {products.slice(0, 8).map((product) => {
+                        {products.slice(0, 8).map((product, index) => {
                             let totalsale = product.price - (product.price * product.discount) / 100;
                             totalsale = totalsale.toFixed(3);
                             return (
                                 <Link
+                                    key={index}
                                     to={'/product-detail?id=' + product.id}
                                     id={product.id}
                                     className="home-featured-product-container-products-product product-body-list-item"
@@ -72,7 +70,7 @@ function Home() {
                                         <img src={product.image} alt="" />
                                     </div>
                                     <div className="home-featured-product-container-products-product-title product-body-list-item-title">
-                                        <h4 onclick="viewProduct({product.id})">{product.name}</h4>
+                                        <h4>{product.name}</h4>
                                     </div>
                                     <div className="home-featured-product-container-products-product-price-discount product-body-list-item-discount">
                                         <p>Giảm {product.discount}%</p>
@@ -83,12 +81,8 @@ function Home() {
                                         </h4>
                                     </div>
                                     <div className="home-featured-product-container-products-product-button">
-                                        <button className="btn btn-cart" onclick="addItem({product.id})">
-                                            Đặt mua
-                                        </button>
-                                        <button className="btn btn-cart" onclick="viewProduct({product.id})">
-                                            Xem chi tiết
-                                        </button>
+                                        <button className="btn btn-cart">Đặt mua</button>
+                                        <button className="btn btn-cart">Xem chi tiết</button>
                                     </div>
                                 </Link>
                             );

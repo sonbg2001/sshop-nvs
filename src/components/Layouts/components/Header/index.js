@@ -96,10 +96,10 @@ function Header() {
                                     <span id="cart-count">Giỏ hàng(0)</span>
                                     <span id="cart-total">/ 0đ</span>
                                 </div>
-                                <button id="btn-cart" className={cs('btn btn-login')} onclick="cartPage()">
+                                <button id="btn-cart" className={cs('btn btn-login')}>
                                     <i className={cs('fa-solid fa-cart-shopping')}></i>
                                 </button>
-                                <button id="btn-wishlist" className={cs('btn btn-login')} onclick="wishlistPage()">
+                                <button id="btn-wishlist" className={cs('btn btn-login')}>
                                     <i className={cs('fa-solid fa-heart')}></i>
                                 </button>
                             </div>

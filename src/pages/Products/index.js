@@ -147,11 +147,12 @@ function Products() {
                         </div>
                     </div>
                     <div id="product-body-list">
-                        {products.map((product) => {
+                        {products.map((product, index) => {
                             let totalsale = product.price - (product.price * product.discount) / 100;
                             totalsale = totalsale.toFixed(3);
                             return (
                                 <Link
+                                    key={index}
                                     to={'/product-detail?id=' + product.id}
                                     id="{product.id}"
                                     class="product-body-list-item"
@@ -160,7 +161,7 @@ function Products() {
                                         <img src={product.image} height="80" alt="" />
                                     </div>
                                     <div class="product-body-list-item-title">
-                                        <h4 onclick="viewProduct({product.id})">{product.name}</h4>
+                                        <h4>{product.name}</h4>
                                     </div>
                                     <div class="product-body-list-item-discount">
                                         <p>Giảm {product.discount}%</p>
@@ -171,12 +172,8 @@ function Products() {
                                         </h4>
                                     </div>
                                     <div class="product-body-list-item-button">
-                                        <button class="btn btn-cart" onclick="addItem(${products[i].id})">
-                                            Đặt mua
-                                        </button>
-                                        <button class="btn btn-cart" onclick="viewProduct(${products[i].id})">
-                                            Xem chi tiết
-                                        </button>
+                                        <button class="btn btn-cart">Đặt mua</button>
+                                        <button class="btn btn-cart">Xem chi tiết</button>
                                     </div>
                                 </Link>
                             );
