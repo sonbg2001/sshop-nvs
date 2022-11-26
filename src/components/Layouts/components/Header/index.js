@@ -1,7 +1,10 @@
+// import { useState } from 'react';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
+
+import Search from '../Search';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import { Link } from 'react-router-dom';
 const cs = classNames.bind(styles);
 function Header() {
     return (
@@ -56,14 +59,15 @@ function Header() {
                             </div>
                         </div>
                         <div className={cs('header-main-mid')}>
-                            <div className={cs('header-search')}>
+                            <Search />
+                            {/* <div className={cs('header-search')}>
                                 <form action="" method="get">
                                     <input type="text" name="search" placeholder="Tìm kiếm..." />
                                     <button className={cs('btn-submit')} type="submit">
                                         <i className={cs('fa-solid fa-magnifying-glass')}></i>
                                     </button>
                                 </form>
-                            </div>
+                            </div> */}
                         </div>
                         <div className={cs('header-main-right')}>
                             <div className={cs('header-user')}>

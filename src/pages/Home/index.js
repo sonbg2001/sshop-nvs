@@ -3,8 +3,25 @@
 import Slide from './slide';
 import { Link } from 'react-router-dom';
 import data from '~/data';
+import { useEffect, useState } from 'react';
 function Home() {
-    let products = data.products;
+    const [listProduct, setListProduct] = useState([]);
+
+    useEffect(() => {
+        // if (listProduct.length < 1) {
+        //     setListProduct(data.products);
+        // }
+        fetch('https://jsonplaceholder.typicode.com/albums')
+            .then((response) => response.json())
+            .then((dataa) => {
+                setListProduct(dataa);
+                setListProduct(data.products);
+            })
+            .catch((e) => {
+                console.log('Cos loi');
+                // return;
+            });
+    }, []);
     return (
         <section id="home" className="home">
             <div className="home-container">
@@ -16,7 +33,7 @@ function Home() {
                         <h2 className="heading">Sản phẩm nổi bật</h2>
                     </div>
                     <div id="product-body-list" className="home-featured-product-container-products">
-                        {products.slice(0, 8).map((product, index) => {
+                        {listProduct.slice(0, 8).map((product, index) => {
                             let totalsale = product.price - (product.price * product.discount) / 100;
                             totalsale = totalsale.toFixed(3);
                             return (
@@ -56,7 +73,7 @@ function Home() {
                         <h2 className="heading">Sản phẩm mới nhất</h2>
                     </div>
                     <div id="product-body-list" className="home-featured-product-container-products">
-                        {products.slice(0, 8).map((product, index) => {
+                        {listProduct.slice(0, 8).map((product, index) => {
                             let totalsale = product.price - (product.price * product.discount) / 100;
                             totalsale = totalsale.toFixed(3);
                             return (
