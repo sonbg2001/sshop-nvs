@@ -6,12 +6,26 @@ import Home from '~/pages/Home';
 import Products from '~/pages/Products';
 import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
+import Login from '~/pages/Login';
+import Brand from '~/pages/Brand';
+import ProductDetail from '~/pages/Product-detail/index.js';
+import Cart from '~/pages/Cart';
+import Register from '~/pages/Register';
+import Contact from '~/pages/Contact';
+import Category from '~/pages/Category';
 //Public Routes
 const publicRoutes = [
     { path: '/', component: Home },
-    { path: '/products', component: Products, layout: HeaderOnly },
+    { path: '/products', component: Products },
     { path: '/upload', component: Upload, layout: null },
     { path: '/search', component: Search },
+    { path: '/login', component: Login },
+    { path: '/brand', component: Brand },
+    { path: '/product-detail', component: ProductDetail },
+    { path: '/cart', component: Cart },
+    { path: '/register', component: Register },
+    { path: '/contact', component: Contact },
+    { path: '/category', component: Category },
 ];
 //Private Routes
 const privateRoutes = [];
