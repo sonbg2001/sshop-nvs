@@ -1,79 +1,75 @@
-// import classNames from 'classnames/bind';
-// import styles from './Header.module.scss';
-// import images from '~/assets/images';
-// import { Link } from 'react-router-dom';
-// const cs = classNames.bind(styles);
+import images from '~/assets/images';
 function Header() {
     return (
-        <div class="header-wrapper">
-            <div class="header-container header-main">
-                <div class="container header-main-content">
-                    <div class="header-main-left">
-                        <div class="header-logo">
+        <div className="header-wrapper">
+            <div className="header-container header-main">
+                <div className="container header-main-content">
+                    <div className="header-main-left">
+                        <div className="header-logo">
                             <a href="/">
                                 <h3>S-Shop</h3>
                             </a>
                         </div>
                     </div>
-                    <div class="header-main-mid">
-                        <div class="header-search">
+                    <div className="header-main-mid">
+                        <div className="header-search">
                             <form action="" method="get">
                                 <input type="text" name="search" placeholder="Search..." />
-                                <button class="btn-submit" type="submit">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                <button className="btn-submit" type="submit">
+                                    <i className="fa-solid fa-magnifying-glass"></i>
                                 </button>
                             </form>
                         </div>
                     </div>
-                    <div class="header-main-right">
-                        <div class="header-user">
-                            <div class="header-user-image">
-                                <img src="assets/images/user.jpg" height="40" alt="" />
+                    <div className="header-main-right">
+                        <div className="header-user">
+                            <div className="header-user-image">
+                                <img src={images.user} height="40" alt="" />
                             </div>
-                            <div class="header-user-funtion">
-                                <div class="header-user-funtion-item">
-                                    <a href="#account.html">
-                                        <i class="fa-solid fa-user"></i>
+                            <div className="header-user-funtion">
+                                <div className="header-user-funtion-item">
+                                    <a href="/account">
+                                        <i className="fa-solid fa-user"></i>
                                         <span>My Account</span>
                                     </a>
                                 </div>
-                                <div class="header-user-funtion-item">
+                                <div className="header-user-funtion-item">
                                     <a href="/">
-                                        <i class="fa-solid fa-gear"></i>
+                                        <i className="fa-solid fa-gear"></i>
                                         <span>Setting</span>
                                     </a>
                                 </div>
-                                <div class="header-user-funtion-item">
-                                    <a href="login.html">
-                                        <i class="fa-solid fa-sign-out-alt"></i>
+                                <div className="header-user-funtion-item">
+                                    <a href="/login">
+                                        <i className="fa-solid fa-sign-out-alt"></i>
                                         <span>Logout</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="header-menu">
-                            <button id="btn-menu" class="btn btn-login">
-                                <i class="fa-solid fa-bars"></i>
+                        <div className="header-menu">
+                            <button id="btn-menu" className="btn btn-login">
+                                <i className="fa-solid fa-bars"></i>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="header-container header-bottom">
-                <div class="container header-bottom-content">
-                    <div class="header-bottom-nav">
-                        <ul class="header-bottom-nav-list">
-                            <li class="header-bottom-nav-list-item">
-                                <a href="admin.html">Dashboard</a>
+            <div className="header-container header-bottom">
+                <div className="container header-bottom-content">
+                    <div className="header-bottom-nav">
+                        <ul className="header-bottom-nav-list">
+                            <li className="header-bottom-nav-list-item">
+                                <a href="/admin">Dashboard</a>
                             </li>
-                            <li class="header-bottom-nav-list-item">
-                                <a href="admin-product.html">Product</a>
+                            <li className="header-bottom-nav-list-item">
+                                <a href="/admin/product">Product</a>
                             </li>
-                            <li class="header-bottom-nav-list-item">
-                                <a href="admin-order.html">Order</a>
+                            <li className="header-bottom-nav-list-item">
+                                <a href="/admin/order">Order</a>
                             </li>
-                            <li class="header-bottom-nav-list-item">
-                                <a href="admin-customer.html">Customer</a>
+                            <li className="header-bottom-nav-list-item">
+                                <a href="/admin/customer">Customer</a>
                             </li>
                         </ul>
                     </div>

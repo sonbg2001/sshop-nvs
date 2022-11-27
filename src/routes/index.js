@@ -16,7 +16,7 @@ import Category from '~/pages/Category';
 //Amin page
 import Admin from '~/pages/admin/Admin';
 import AdminProduct from '~/pages/admin/AdminProduct';
-import AdminCustumer from '~/pages/admin/AdminCustumer';
+import AdminCustomer from '~/pages/admin/AdminCustomer';
 import AdminOrder from '~/pages/admin/AdminOrder';
 //Public Routes
 const publicRoutes = [
@@ -35,7 +35,7 @@ const publicRoutes = [
 //Private Routes
 const privateRoutes = [
     { path: '/admin/products', component: AdminProduct, layout: AdminLayout },
-    { path: '/admin/custumer', component: AdminCustumer, layout: AdminLayout },
+    { path: '/admin/customer', component: AdminCustomer, layout: AdminLayout },
     { path: '/admin/order', component: AdminOrder, layout: AdminLayout },
     { path: '/admin', component: Admin, layout: AdminLayout },
 ];

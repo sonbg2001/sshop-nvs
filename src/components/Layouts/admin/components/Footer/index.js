@@ -1,14 +1,14 @@
 function Footer() {
     return (
-        <div class="footer-wrapper">
-            <div class="footer-container">
-                <div class="footer-content">
-                    <div class="footer-content-top">
-                        <div class="footer-content-top-quick-link">
-                            <div class="footer-content-top-quick-link-title">
+        <div className="footer-wrapper">
+            <div className="footer-container">
+                <div className="footer-content">
+                    <div className="footer-content-top">
+                        <div className="footer-content-top-quick-link">
+                            <div className="footer-content-top-quick-link-title">
                                 <h3>Quick Links</h3>
                             </div>
-                            <div class="footer-content-top-quick-link-content">
+                            <div className="footer-content-top-quick-link-content">
                                 <ul>
                                     <li>
                                         <a href="/">Home</a>
@@ -28,23 +28,23 @@ function Footer() {
                                 </ul>
                             </div>
                         </div>
-                        <div class="footer-content-top-newsletter">
-                            <div class="footer-content-top-newsletter-title">
+                        <div className="footer-content-top-newsletter">
+                            <div className="footer-content-top-newsletter-title">
                                 <h3>Newsletter</h3>
                             </div>
-                            <div class="footer-content-top-newsletter-content">
+                            <div className="footer-content-top-newsletter-content">
                                 <p>Subscribe to our newsletter to get the latest news and updates.</p>
                                 <form action="">
                                     <input type="text" placeholder="Enter your email address" />
-                                    <button class="btn btn-cart" type="submit">
+                                    <button className="btn btn-cart" type="submit">
                                         Subscribe
                                     </button>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div class="footer-content-bottom">
-                        <div class="footer-content-bottom-copyright">
+                    <div className="footer-content-bottom">
+                        <div className="footer-content-bottom-copyright">
                             <p>
                                 &copy; 2022 All Rights Reserved. Designed by <a href="/">S-Shop</a>
                             </p>
