@@ -106,7 +106,7 @@ function Header() {
                                 <div className={cs('header-cart')}>
                                     <Link to="/login">Đăng nhập</Link>
                                     <span>/</span>
-                                    <Link to="/login">Đăng ký</Link>
+                                    <Link to="/register">Đăng ký</Link>
                                 </div>
                             )}
                         </div>
