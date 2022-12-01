@@ -5,7 +5,11 @@ import { useEffect, useState } from 'react';
 function Products() {
     const [listProduct, setListProduct] = useState([]);
     const [sortType, setsortType] = useState('default');
+    const [filter, setFilter] = useState('');
     let params = {};
+    var search = document.location.href.split('search=')[1];
+    if (search) params.q = search.toLowerCase();
+    // console.log(search);
     switch (sortType) {
         case 'nameasc':
             // params._sort = 'name';
@@ -43,6 +47,8 @@ function Products() {
         default:
         // code block
     }
+    params.type_like = filter;
+    console.log(document.getElementsByTagName('input'));
     useEffect(() => {
         request
             .get('products', { params })
@@ -54,10 +60,19 @@ function Products() {
                 console.log(error);
             });
         // eslint-disable-next-line
-    }, [sortType]);
+    }, [sortType, filter]);
     return (
         <section id="product" className="product">
             <div className="product-container">
+                <div className="product-top">
+                    {search && (
+                        <div className="product-top-title">
+                            <h3 className="heading-page">
+                                Kết quả tìm kiếm với từ khoá: {decodeURIComponent(search)}{' '}
+                            </h3>
+                        </div>
+                    )}
+                </div>
                 <div className="product-top">
                     <div className="product-top-title">
                         <h3 className="heading-page">
@@ -72,7 +87,7 @@ function Products() {
                             <select
                                 name="sort-by"
                                 onChange={(e) => {
-                                    console.log(e.target.value);
+                                    // console.log(e.target.value);
                                     setsortType(e.target.value);
                                 }}
                             >
@@ -95,16 +110,17 @@ function Products() {
                             <select
                                 name="filter"
                                 onChange={(e) => {
-                                    alert(e.target.value);
+                                    console.log(e.target.value);
+                                    setFilter(e.target.value);
                                 }}
                             >
-                                <option value="all">Tất cả</option>
+                                <option value="">Tất cả</option>
                                 <option value="shirt">Áo phông</option>
                                 <option value="pant">Quần</option>
                                 <option value="shoe">Giày</option>
                             </select>
                         </div>
-                        <div className="product-body-filter-brand">
+                        {/* <div className="product-body-filter-brand">
                             <h3>Thương hiệu</h3>
                             <div className="product-body-filter-brand-list">
                                 <ul>
@@ -122,29 +138,35 @@ function Products() {
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="product-body-filter-price">
                             <h3>Giá</h3>
                             <div className="product-body-filter-price-list">
                                 <ul>
                                     <li>
-                                        <input type="checkbox" id="price-1" name="price-1" />
+                                        <input
+                                            type="radio"
+                                            value="1"
+                                            id="price-1"
+                                            name="price"
+                                            onChange={(e) => console.log(e.target.value)}
+                                        />
                                         <label htmlFor="price-1">0đ - 100.000đ</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="price-2" name="price-2" />
+                                        <input type="radio" value="2" id="price-2" name="price" />
                                         <label htmlFor="price-2">100.000đ - 200.000đ</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="price-3" name="price-3" />
+                                        <input type="radio" value="3" id="price-3" name="price" />
                                         <label htmlFor="price-3">200.000đ - 300.000đ</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="price-4" name="price-4" />
+                                        <input type="radio" value="4" id="price-4" name="price" />
                                         <label htmlFor="price-4">300.000đ - 500.000đ</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="price-5" name="price-5" />
+                                        <input type="radio" value="5" id="price-5" name="price" />
                                         <label htmlFor="price-5">500.000đ - 800.000đ</label>
                                     </li>
                                 </ul>
@@ -177,7 +199,7 @@ function Products() {
                                 </ul>
                             </div>
                         </div>
-                        <div className="product-body-filter-color">
+                        {/* <div className="product-body-filter-color">
                             <h3>Màu</h3>
                             <div className="product-body-filter-color-list">
                                 <ul>
@@ -203,7 +225,7 @@ function Products() {
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="product-body-filter-button">
                             <button type="submit" className="btn btn-cart">
                                 Lọc

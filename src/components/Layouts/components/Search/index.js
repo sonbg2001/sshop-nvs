@@ -4,7 +4,7 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     return (
         <div className="header-search">
-            <form action="/search" method="get">
+            <form action="/products" method="get">
                 <input
                     value={searchValue}
                     type="text"

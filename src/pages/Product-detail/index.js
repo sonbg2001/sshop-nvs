@@ -42,9 +42,13 @@ function ProductDetail() {
                         <p>Giảm giá: {product.discount}%</p>
                         <div>
                             <label htmlFor="quantity">Số lượng:</label>
-                            <input type="number" min="1" max={product.number} id="quantity" />
+                            <input type="number" min="1" max={product.number} />
                         </div>
-                        <button className="btn btn-cart">Đặt mua</button>
+
+                        <div>
+                            <button className="btn btn-active">Mua ngay</button>
+                            <button className="btn btn-cart">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
             </div>

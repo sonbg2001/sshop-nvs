@@ -59,17 +59,9 @@ function Header() {
                         </div>
                         <div className={cs('header-main-mid')}>
                             <Search />
-                            {/* <div className={cs('header-search')}>
-                                <form action="" method="get">
-                                    <input type="text" name="search" placeholder="Tìm kiếm..." />
-                                    <button className={cs('btn-submit')} type="submit">
-                                        <i className={cs('fa-solid fa-magnifying-glass')}></i>
-                                    </button>
-                                </form>
-                            </div> */}
                         </div>
                         <div className={cs('header-main-right')}>
-                            <div className={cs('header-user')}>
+                            {/* <div className={cs('header-user')}>
                                 <div className={cs('header-user-image')}>
                                     <img
                                         src="https://luv.vn/wp-content/uploads/2021/08/hinh-anh-gai-xinh-16.jpg"
@@ -97,8 +89,8 @@ function Header() {
                                         </a>
                                     </div>
                                 </div>
-                            </div>
-                            <div className={cs('header-cart')}>
+                            </div> */}
+                            {/* <div className={cs('header-cart')}>
                                 <div id="cart-mini">
                                     <span id="cart-count">Giỏ hàng(0)</span>
                                     <span id="cart-total">/ 0đ</span>
@@ -109,12 +101,14 @@ function Header() {
                                 <button id="btn-wishlist" className={cs('btn btn-login')}>
                                     <i className={cs('fa-solid fa-heart')}></i>
                                 </button>
-                            </div>
-                            {/* <div className={cs('header-cart')}>
-                                <Link to="/login">Đăng nhập</Link>
-                                <span>/</span>
-                                <Link to="/login">Đăng ký</Link>
                             </div> */}
+                            {true && (
+                                <div className={cs('header-cart')}>
+                                    <Link to="/login">Đăng nhập</Link>
+                                    <span>/</span>
+                                    <Link to="/login">Đăng ký</Link>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

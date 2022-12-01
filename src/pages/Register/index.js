@@ -23,7 +23,7 @@ function Register() {
                                 </button>
                             </div>
                             <div class="form-group form-group-link form-group-link-register">
-                                <a href="login.html">If you have an account? Go to login page</a>
+                                <a href="/login">If you have an account? Go to login page</a>
                             </div>
                         </form>
                     </div>
