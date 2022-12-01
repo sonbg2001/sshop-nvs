@@ -48,7 +48,7 @@ function AdminCustomer() {
                                         <td>{user.username}</td>
                                         <td>{user.email}</td>
                                         <td>{user.phone}</td>
-                                        <td>{user.address.street}</td>
+                                        <td>{user.address}</td>
                                     </tr>
                                 );
                             })}

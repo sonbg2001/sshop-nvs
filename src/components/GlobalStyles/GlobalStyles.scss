@@ -47,8 +47,8 @@ thead th {
     font-size: 18px;
 }
 
-tbody tr {
-}
+// tbody tr {
+// }
 
 tbody tr:hover {
     background-color: #eee;
@@ -450,6 +450,7 @@ ul {
 }
 
 .header-bottom-nav-list-item a {
+    margin-right: 4px;
     color: var(--white-transparent);
     text-decoration: none;
 }

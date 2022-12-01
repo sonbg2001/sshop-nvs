@@ -8,7 +8,7 @@ import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
 import Login from '~/pages/Login';
 import Brand from '~/pages/Brand';
-import ProductDetail from '~/pages/Product-detail/index.js';
+import ProductDetail from '~/pages/Product-detail';
 import Cart from '~/pages/Cart';
 import Register from '~/pages/Register';
 import Contact from '~/pages/Contact';
@@ -26,7 +26,7 @@ const publicRoutes = [
     { path: '/search', component: Search },
     { path: '/login', component: Login },
     { path: '/brand', component: Brand },
-    { path: '/product-detail', component: ProductDetail },
+    { path: '/product-detail/:id', component: ProductDetail },
     { path: '/cart', component: Cart },
     { path: '/register', component: Register },
     { path: '/contact', component: Contact },

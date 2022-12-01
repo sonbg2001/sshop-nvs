@@ -1,11 +1,8 @@
 import axios from 'axios';
 
 const request = axios.create({
-    baseURL: 'https://jsonplaceholder.typicode.com/',
+    method: 'get',
+    baseURL: 'http://localhost:3000/',
 });
-
-// export const get = async () => {
-
-// }
 
 export default request;

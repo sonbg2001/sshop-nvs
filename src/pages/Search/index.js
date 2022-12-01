@@ -193,7 +193,7 @@ function Search() {
                             return (
                                 <Link
                                     key={index}
-                                    to={'/product-detail?id=' + product.id}
+                                    to={'/product-detail/' + product.id}
                                     id="{product.id}"
                                     className="product-body-list-item"
                                 >
