@@ -1,16 +1,31 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-// import data from '~/data';
 import request from '~/utils/request';
-// import '~/assets';
-// import { getProductById } from '~/utils/index';
 function ProductDetail() {
     const [product, setProduct] = useState('');
+    const [productQuantity, setProductQuantity] = useState(1);
     let id = useParams();
-    let s = 'products/' + id.id;
+
+    // function handleBuy() {
+    //     alert('Đã mua hang');
+    // }
+    function handleAddToCart() {
+        alert('Đã thêm vào giỏ hàng');
+        let cart = [];
+        cart = JSON.parse(localStorage.getItem('cart'));
+        if (!cart) {
+            cart = [{ product, productQuantity }];
+            localStorage.setItem('cart', JSON.stringify(cart));
+        } else {
+            cart.push({ product, productQuantity });
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+        console.log(cart);
+    }
+
     useEffect(() => {
         request
-            .get(s, {})
+            .get('products/' + id.id, {})
             .then(function (response) {
                 setProduct(response.data);
             })
@@ -42,12 +57,22 @@ function ProductDetail() {
                         <p>Giảm giá: {product.discount}%</p>
                         <div>
                             <label htmlFor="quantity">Số lượng:</label>
-                            <input type="number" min="1" max={product.number} />
+                            <input
+                                type="number"
+                                value={productQuantity}
+                                min="1"
+                                max={product.number}
+                                onChange={(e) => {
+                                    setProductQuantity(e.target.value);
+                                }}
+                            />
                         </div>
 
                         <div>
                             <button className="btn btn-active">Mua ngay</button>
-                            <button className="btn btn-cart">Thêm vào giỏ hàng</button>
+                            <button className="btn btn-cart" onClick={handleAddToCart}>
+                                Thêm vào giỏ hàng
+                            </button>
                         </div>
                     </div>
                 </div>

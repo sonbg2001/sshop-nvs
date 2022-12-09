@@ -1,58 +1,68 @@
-import data from '~/data';
+// import { useState } from 'react';
+
 function Cart() {
-    let products = data.products;
+    function formatCash(str) {
+        return str
+            .split('')
+            .reverse()
+            .reduce((prev, next, index) => {
+                return (index % 3 ? next : next + '.') + prev;
+            });
+    }
+
+    // const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
+    let cart = JSON.parse(localStorage.getItem('cart'));
     return (
         <section className="cart">
             <div className="cart-container">
                 <div className="product-top">
                     <div className="product-top-title">
                         <h3 className="heading-page">
-                            <a href="index.html">Shop</a> / <span>Cart</span>
+                            <a href="/">Shop</a> / <span>Cart</span>
                         </h3>
                     </div>
                 </div>
                 <div className="cart-table-head">
-                    <h3>Shopping Cart</h3>
-                    <button className="btn btn-cart" onClick="clearCart()">
-                        Clear Cart
-                    </button>
+                    <h3>Danh sách sản phẩm</h3>
+                    <button className="btn btn-cart">Xoá tất cả</button>
                 </div>
                 <div className="cart-table">
                     <table>
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Price</th>
-                                <th>Discount</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                                <th>Update</th>
-                                <th>Remove</th>
+                                <th>STT</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Ảnh</th>
+                                <th>Đơn giá</th>
+                                <th>Giảm</th>
+                                <th>Số lượng</th>
+                                <th>Tổng </th>
+
+                                <th>Xoá</th>
                             </tr>
                         </thead>
                         <tbody id="cart">
-                            {products.map((product) => {
+                            {cart.map((item, index) => {
                                 return (
-                                    <tr>
-                                        <td>{product.id}</td>
-                                        <td>{product.name}</td>
+                                    <tr key={index}>
+                                        <td>{index + 1}</td>
+                                        <td>{item.product.name}</td>
                                         <td>
-                                            <img src={product.image} height="40" alt="" />
+                                            <img src={item.product.image} height="40" alt="" />
                                         </td>
-                                        <td>{product.price.toFixed(3)}đ</td>
-                                        <td>{product.discount}%</td>
-                                        <td>
-                                            <input id="cart{product.id}" type="number" value="2" />
-                                        </td>
+                                        <td>{formatCash(item.product.price * 1000 + '')}đ</td>
+                                        <td>{item.product.discount}%</td>
+                                        <td>{Number(item.productQuantity)}</td>
                                         {/* <td>${totalItem.toFixed(3)}đ</td> */}
-                                        <td>2đ</td>
                                         <td>
-                                            <button onClick="updateItem({product.id})">Update</button>
+                                            {formatCash(
+                                                1000 * item.product.price * Number(item.productQuantity) + '',
+                                            ) || 0}
+                                            đ
                                         </td>
+
                                         <td>
-                                            <button onClick="removeItem({product.id})">Remove</button>
+                                            <button>Xoá</button>
                                         </td>
                                     </tr>
                                 );
@@ -65,11 +75,11 @@ function Cart() {
                     <div id="cart-total-checkout"></div>
                 </div>
                 <div className="cart-button">
-                    <a href="/" className="btn btn-cart" onClick="checkout()">
-                        Checkout
+                    <a href="/" className="btn btn-cart">
+                        Thanh toán
                     </a>
-                    <a href="product.html" className="btn btn-cart">
-                        Continue Shopping
+                    <a href="/products" className="btn btn-cart">
+                        Tiếp tục mua sắm
                     </a>
                 </div>
             </div>

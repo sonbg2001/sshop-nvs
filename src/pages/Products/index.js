@@ -1,4 +1,3 @@
-// import data from '~/data';
 import request from '~/utils/request';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';

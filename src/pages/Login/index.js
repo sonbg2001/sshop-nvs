@@ -4,7 +4,6 @@ function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     function handleSubmit(e) {
-        console.log(username, password);
         request
             .get('users', {
                 params: {
@@ -13,7 +12,19 @@ function Login() {
                 },
             })
             .then(function (response) {
-                console.log(response.data.length);
+                let user = null;
+                if (response.data.length > 0) {
+                    user = response.data[0];
+                    if (user.role === 'admin') console.log('admin');
+                    else console.log('user');
+
+                    localStorage.setItem('user', JSON.stringify(user));
+
+                    // alert('Đăng nhập thành công');
+                } else {
+                    alert('Sai thông tin đăng nhập');
+                    e.preventDefault();
+                }
             })
             .catch(function (error) {
                 // handle error
@@ -31,18 +42,17 @@ function Login() {
                         <h1>S-Shop</h1>
                     </div>
                     <div className="login-form">
-                        <form method="get" action="" onSubmit={handleSubmit}>
+                        <form action="/" onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label htmlFor="username">Username</label>
                                 <input
                                     spellCheck="false"
-                                    value={username}
+                                    value={username.trim()}
                                     type="text"
                                     className="form-control"
                                     id="username"
                                     onChange={(e) => {
                                         setUsername(e.target.value);
-                                        // console.log(username);
                                     }}
                                     placeholder="Username"
                                 />
@@ -56,7 +66,6 @@ function Login() {
                                     id="password"
                                     placeholder="Password"
                                     onChange={(e) => {
-                                        console.log(e.target.value);
                                         setPassword(e.target.value);
                                     }}
                                 />
