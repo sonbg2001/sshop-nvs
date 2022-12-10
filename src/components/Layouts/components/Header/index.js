@@ -70,7 +70,14 @@ function Header() {
                                 <>
                                     <div className={cs('header-user')}>
                                         <div className={cs('header-user-image')}>
-                                            <img src={user.acatar} height="40" alt="" />
+                                            <img
+                                                src={
+                                                    user.acatar ||
+                                                    'https://st3.depositphotos.com/1767687/16607/v/450/depositphotos_166074422-stock-illustration-default-avatar-profile-icon-grey.jpg'
+                                                }
+                                                height="40"
+                                                alt=""
+                                            />
                                         </div>
                                         <div className={cs('header-user-funtion')}>
                                             <div className={cs('header-user-funtion-item')}>

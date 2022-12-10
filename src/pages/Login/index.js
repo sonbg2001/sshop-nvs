@@ -1,9 +1,16 @@
 import { useState } from 'react';
 import request from '~/utils/request';
+import { getUser } from '~/utils';
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     function handleSubmit(e) {
+        console.log(
+            getUser({
+                username,
+                password,
+            }),
+        );
         request
             .get('users', {
                 params: {

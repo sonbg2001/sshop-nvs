@@ -1,6 +1,7 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 
 function Cart() {
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
     function formatCash(str) {
         return str
             .split('')
@@ -9,9 +10,13 @@ function Cart() {
                 return (index % 3 ? next : next + '.') + prev;
             });
     }
+    function handleDeleteAllCart() {
+        setCart([]);
+        localStorage.removeItem('cart');
+    }
 
     // const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
-    let cart = JSON.parse(localStorage.getItem('cart'));
+
     return (
         <section className="cart">
             <div className="cart-container">
@@ -24,7 +29,9 @@ function Cart() {
                 </div>
                 <div className="cart-table-head">
                     <h3>Danh sách sản phẩm</h3>
-                    <button className="btn btn-cart">Xoá tất cả</button>
+                    <button className="btn btn-cart" onClick={handleDeleteAllCart}>
+                        Xoá tất cả
+                    </button>
                 </div>
                 <div className="cart-table">
                     <table>
@@ -71,8 +78,8 @@ function Cart() {
                     </table>
                 </div>
                 <div className="cart-total-price">
-                    <div id="cart-origin-total"></div>
-                    <div id="cart-total-checkout"></div>
+                    <div id="cart-origin-total">Tổng tiền: </div>
+                    <div id="cart-total-checkout">Pippip</div>
                 </div>
                 <div className="cart-button">
                     <a href="/" className="btn btn-cart">
