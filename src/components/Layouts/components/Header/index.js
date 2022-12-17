@@ -3,14 +3,15 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import Search from '../Search';
 import styles from './Header.module.scss';
+import configPaths from '~/routes/configPaths';
 
 const cs = classNames.bind(styles);
 function Header() {
     let user = JSON.parse(localStorage.getItem('user'));
+
     function handleLogout() {
         localStorage.removeItem('user');
     }
-
     return (
         <div>
             <div className={cs('header-wrapper')}>
@@ -72,7 +73,7 @@ function Header() {
                                         <div className={cs('header-user-image')}>
                                             <img
                                                 src={
-                                                    user.acatar ||
+                                                    user.avatar ||
                                                     'https://st3.depositphotos.com/1767687/16607/v/450/depositphotos_166074422-stock-illustration-default-avatar-profile-icon-grey.jpg'
                                                 }
                                                 height="40"
@@ -81,10 +82,10 @@ function Header() {
                                         </div>
                                         <div className={cs('header-user-funtion')}>
                                             <div className={cs('header-user-funtion-item')}>
-                                                <a href="#account.html">
+                                                <Link to="/account">
                                                     <i className={cs('fa-solid fa-user')}></i>
                                                     <span>Tài khoản</span>
-                                                </a>
+                                                </Link>
                                             </div>
                                             <div className={cs('header-user-funtion-item')}>
                                                 <a href="/history">
@@ -93,7 +94,7 @@ function Header() {
                                                 </a>
                                             </div>
                                             <div className={cs('header-user-funtion-item')}>
-                                                <a href="/login" onClick={handleLogout}>
+                                                <a href={configPaths.login} onClick={handleLogout}>
                                                     <i className={cs('fa-solid fa-sign-out-alt')}></i>
                                                     <span>Đăng xuất</span>
                                                 </a>
@@ -107,7 +108,7 @@ function Header() {
                                             <span id="cart-total">/ 0đ</span>
                                         </div>
 
-                                        <Link to="/cart" id="btn-cart" className={cs('btn btn-login')}>
+                                        <Link to={configPaths.cart} id="btn-cart" className={cs('btn btn-login')}>
                                             <i className={cs('fa-solid fa-cart-shopping')} />
                                         </Link>
                                         <button id="btn-wishlist" className={cs('btn btn-login')}>
@@ -118,7 +119,7 @@ function Header() {
                             )}
                             {!user && (
                                 <div className={cs('header-cart')}>
-                                    <Link to="/login">Đăng nhập</Link>
+                                    <Link to={configPaths.login}>Đăng nhập</Link>
                                     <span>/</span>
                                     <Link to="/register">Đăng ký</Link>
                                 </div>
@@ -131,23 +132,23 @@ function Header() {
                         <div className={cs('header-bottom-nav')}>
                             <ul className={cs('header-bottom-nav-list')}>
                                 <li className={cs('header-bottom-nav-list-item')}>
-                                    <Link to="/brand">Thương hiệu</Link>
+                                    <Link to={configPaths.brand}>Thương hiệu</Link>
                                 </li>
                                 <li className={cs('header-bottom-nav-list-item')}>
                                     <a href="/">Trang chủ</a>
                                 </li>
                                 <li className={cs('header-bottom-nav-list-item header-bottom-nav-list-item-product')}>
-                                    <Link to="/products">Sản phẩm</Link>
+                                    <Link to={configPaths.products}>Sản phẩm</Link>
                                     <i className={cs('fa-solid fa-angle-down')}></i>
                                     <ul className={cs('header-bottom-nav-list-sub')}>
                                         <li className={cs('header-bottom-nav-list-sub-item')}>
-                                            <a href="/products">Áo phông</a>
+                                            <a href={configPaths.products}>Áo phông</a>
                                         </li>
                                         <li className={cs('header-bottom-nav-list-sub-item')}>
-                                            <a href="/products">Quần</a>
+                                            <a href={configPaths.products}>Quần</a>
                                         </li>
                                         <li className={cs('header-bottom-nav-list-sub-item')}>
-                                            <a href="/products">Giày</a>
+                                            <a href={configPaths.products}>Giày</a>
                                         </li>
                                     </ul>
                                 </li>

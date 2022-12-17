@@ -1,3 +1,4 @@
+import configPaths from '~/routes/configPaths';
 function Footer() {
     return (
         <div className="footer-wrapper">
@@ -14,7 +15,7 @@ function Footer() {
                                         <a href="/">Home</a>
                                     </li>
                                     <li>
-                                        <a href="/brand">About Us</a>
+                                        <a href={configPaths.brand}>About Us</a>
                                     </li>
                                     <li>
                                         <a href="/contact">Contact Us</a>

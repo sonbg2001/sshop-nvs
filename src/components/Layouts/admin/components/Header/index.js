@@ -1,4 +1,5 @@
-import images from '~/assets/images';
+import { Link } from 'react-router-dom';
+import configPaths from '~/routes/configPaths';
 function Header() {
     return (
         <div className="header-wrapper">
@@ -24,7 +25,11 @@ function Header() {
                     <div className="header-main-right">
                         <div className="header-user">
                             <div className="header-user-image">
-                                <img src={images.user} height="40" alt="" />
+                                <img
+                                    src="https://luv.vn/wp-content/uploads/2021/08/hinh-anh-gai-xinh-16.jpg"
+                                    height="40"
+                                    alt=""
+                                />
                             </div>
                             <div className="header-user-funtion">
                                 <div className="header-user-funtion-item">
@@ -40,7 +45,7 @@ function Header() {
                                     </a>
                                 </div>
                                 <div className="header-user-funtion-item">
-                                    <a href="/login">
+                                    <a href={configPaths.login}>
                                         <i className="fa-solid fa-sign-out-alt"></i>
                                         <span>Logout</span>
                                     </a>
@@ -60,16 +65,16 @@ function Header() {
                     <div className="header-bottom-nav">
                         <ul className="header-bottom-nav-list">
                             <li className="header-bottom-nav-list-item">
-                                <a href="/admin">Dashboard</a>
+                                <Link to="/admin">Dashboard</Link>
                             </li>
                             <li className="header-bottom-nav-list-item">
-                                <a href="/admin/product">Product</a>
+                                <Link to="/admin/products">Sản phẩm</Link>
                             </li>
                             <li className="header-bottom-nav-list-item">
-                                <a href="/admin/order">Order</a>
+                                <Link to="/admin/order">Đơn hàng</Link>
                             </li>
                             <li className="header-bottom-nav-list-item">
-                                <a href="/admin/customer">Customer</a>
+                                <Link to="/admin/customer">Khách hàng</Link>
                             </li>
                         </ul>
                     </div>

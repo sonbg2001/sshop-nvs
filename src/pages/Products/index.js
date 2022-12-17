@@ -1,65 +1,56 @@
-import request from '~/utils/request';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { getProductsByParams } from '~/utils';
 function Products() {
     const [listProduct, setListProduct] = useState([]);
-    const [sortType, setsortType] = useState('default');
+    const [sortType, setSortType] = useState('default');
     const [filter, setFilter] = useState('');
-    let params = {};
+    const params = {};
     var search = document.location.href.split('search=')[1];
     if (search) params.q = search.toLowerCase();
-    // console.log(search);
     switch (sortType) {
         case 'nameasc':
-            // params._sort = 'name';
-            // params._order = 'asc',
-            params = {
-                _sort: 'name',
-                _order: 'asc',
-            };
+            params._sort = 'name';
+            params._order = 'asc';
+
             break;
         case 'namedesc':
-            params = {
-                _sort: 'name',
-                _order: 'desc',
-            };
+            params._sort = 'name';
+            params._order = 'desc';
+
             break;
         case 'priceasc':
-            params = {
-                _sort: 'price',
-                _order: 'asc',
-            };
+            params._sort = 'price';
+            params._order = 'asc';
+
             break;
         case 'pricedesc':
-            params = {
-                _sort: 'price',
-                _order: 'desc',
-            };
+            params._sort = 'price';
+            params._order = 'desc';
+
             break;
         case 'new':
-            params = {
-                _sort: 'id',
-                _order: 'desc',
-                // _limit: 2,
-            };
+            params._sort = 'id';
+            params._order = 'desc';
+
             break;
         default:
         // code block
     }
+
     params.type_like = filter;
-    console.log(document.getElementsByTagName('input'));
     useEffect(() => {
-        request
-            .get('products', { params })
+        getProductsByParams(params)
             .then(function (response) {
-                setListProduct(response.data);
+                setListProduct(response);
+                // console.log(response);
             })
             .catch(function (error) {
                 // handle error
                 console.log(error);
             });
         // eslint-disable-next-line
-    }, [sortType, filter]);
+    }, [filter, sortType]);
     return (
         <section id="product" className="product">
             <div className="product-container">
@@ -86,8 +77,7 @@ function Products() {
                             <select
                                 name="sort-by"
                                 onChange={(e) => {
-                                    // console.log(e.target.value);
-                                    setsortType(e.target.value);
+                                    setSortType(e.target.value);
                                 }}
                             >
                                 <option value="default">Mặc định</option>
@@ -109,7 +99,6 @@ function Products() {
                             <select
                                 name="filter"
                                 onChange={(e) => {
-                                    console.log(e.target.value);
                                     setFilter(e.target.value);
                                 }}
                             >

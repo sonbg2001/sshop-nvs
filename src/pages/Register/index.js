@@ -1,28 +1,26 @@
 import { useState } from 'react';
-import request from '~/utils/request';
+import { getUsersByParams, addUser } from '~/utils';
+import configPaths from '~/routes/configPaths';
 function Register() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [repassword, setRepassword] = useState('');
     function handleRegister(e) {
         if (username && password && repassword) {
-            request
-                .get('users', { params: { username } })
-                .then(function (response) {
-                    console.log(response.data.length);
-                    if (response.data.length > 0) {
+            getUsersByParams({ username })
+                .then(function (data) {
+                    if (data.length > 0) {
                         console.log('Tài khoản đã tồn tại');
                     } else if (repassword !== password) {
                         console.log('Nhập lại mật khẩu không chính xác!!!');
                     } else {
-                        request
-                            .post('users', {
-                                username,
-                                password,
-                            })
+                        addUser({
+                            username,
+                            password,
+                        })
                             .then(function (response) {
                                 console.log('Tạo tài khoản thành công, chuyển qua đăng nhập!');
-                                // console.log(response.data);
+                                console.log(response);
                             })
                             .catch(function (error) {
                                 // handle error
@@ -99,7 +97,7 @@ function Register() {
                                 </button>
                             </div>
                             <div className="form-group form-group-link form-group-link-register">
-                                <a href="/login">Bạn đã có tài khoản?Chuyển qua đăng nhập</a>
+                                <a href={configPaths.login}>Bạn đã có tài khoản?Chuyển qua đăng nhập</a>
                             </div>
                         </form>
                     </div>

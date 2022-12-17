@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import request from '~/utils/request';
+import configPaths from '~/routes/configPaths';
+import { getProductById } from '~/utils';
 function ProductDetail() {
     const [product, setProduct] = useState('');
     const [productQuantity, setProductQuantity] = useState(1);
-    let id = useParams();
+    let { id } = useParams();
 
-    // function handleBuy() {
-    //     alert('Đã mua hang');
-    // }
     function handleAddToCart() {
         alert('Đã thêm vào giỏ hàng');
         let cart = [];
@@ -24,10 +22,10 @@ function ProductDetail() {
     }
 
     useEffect(() => {
-        request
-            .get('products/' + id.id, {})
+        getProductById(id)
             .then(function (response) {
-                setProduct(response.data);
+                // console.log(response);
+                setProduct(response);
             })
             .catch(function (error) {
                 // handle error
@@ -41,7 +39,7 @@ function ProductDetail() {
                 <div className="product-top">
                     <div className="product-top-title">
                         <h3 className="heading-page">
-                            <a href="/products">Sản phẩm</a> / <span>Chi tiết sản phẩm</span>
+                            <a href={configPaths.products}>Sản phẩm</a> / <span>Chi tiết sản phẩm</span>
                         </h3>
                     </div>
                 </div>

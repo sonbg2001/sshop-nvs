@@ -1,10 +1,10 @@
 import { useState } from 'react';
-
+import configPaths from '~/routes/configPaths';
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     return (
         <div className="header-search">
-            <form action="/products" method="get">
+            <form action={configPaths.products} method="get">
                 <input
                     value={searchValue}
                     type="text"

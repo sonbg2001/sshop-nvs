@@ -660,6 +660,9 @@ ul {
     box-shadow: var(--box-shadow);
 }
 
+.login-content.account {
+    max-width: 600px;
+}
 .login-header {
     display: flex;
     align-items: center;
@@ -714,6 +717,16 @@ ul {
 
 .form-group {
     width: 100%;
+}
+
+.form-group select {
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: calc(100% / 3);
+    font-size: 14px;
+    color: var(--black);
+    transition: all 0.2s linear;
 }
 
 .form-group a {

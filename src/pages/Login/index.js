@@ -1,33 +1,20 @@
 import { useState } from 'react';
-import request from '~/utils/request';
-import { getUser } from '~/utils';
+import { getUsersByParams } from '~/utils';
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     function handleSubmit(e) {
-        console.log(
-            getUser({
-                username,
-                password,
-            }),
-        );
-        request
-            .get('users', {
-                params: {
-                    username,
-                    password,
-                },
-            })
-            .then(function (response) {
+        getUsersByParams({ username, password })
+            .then(function (data) {
                 let user = null;
-                if (response.data.length > 0) {
-                    user = response.data[0];
+                if (data.length > 0) {
+                    user = data[0];
                     if (user.role === 'admin') console.log('admin');
                     else console.log('user');
 
                     localStorage.setItem('user', JSON.stringify(user));
 
-                    // alert('Đăng nhập thành công');
+                    alert('Đăng nhập thành công');
                 } else {
                     alert('Sai thông tin đăng nhập');
                     e.preventDefault();
@@ -51,7 +38,7 @@ function Login() {
                     <div className="login-form">
                         <form action="/" onSubmit={handleSubmit}>
                             <div className="form-group">
-                                <label htmlFor="username">Username</label>
+                                <label htmlFor="username">Tên đăng nhập</label>
                                 <input
                                     spellCheck="false"
                                     value={username.trim()}
@@ -65,7 +52,7 @@ function Login() {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="password">Mật khẩu</label>
                                 <input
                                     value={password}
                                     type="password"
@@ -83,8 +70,8 @@ function Login() {
                                 </button>
                             </div>
                             <div className="form-group form-group-link">
-                                <a href="/register">Create an account</a>
-                                <a href="/">Forgot password?</a>
+                                <a href="/register">Tạo tài khoản mới mới</a>
+                                <a href="/">Quên mật khẩu?</a>
                             </div>
                         </form>
                     </div>

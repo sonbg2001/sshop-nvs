@@ -1,12 +1,17 @@
 import Slide from './slide';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import configPaths from '~/routes/configPaths';
+import { getProductsByParams } from '~/utils';
 function Home() {
     const [listFeaturedProduct, setListFeaturedProduct] = useState([]);
     const [listNewProduct, setListNewProduct] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:3000/products?_start=0&_end=8&_sort=sold')
-            .then((response) => response.json())
+        getProductsByParams({
+            _start: 0,
+            _end: 8,
+            _sort: 'sold',
+        })
             .then((data) => {
                 setListFeaturedProduct(data);
             })
@@ -14,8 +19,13 @@ function Home() {
                 console.log('Error!!!');
                 // return;
             });
-        fetch('http://localhost:3000/products?_start=0&_end=8&_sort=id&_order=desc')
-            .then((response) => response.json())
+
+        getProductsByParams({
+            _start: 0,
+            _end: 8,
+            _sort: 'id',
+            _order: 'desc',
+        })
             .then((data) => {
                 setListNewProduct(data);
             })
@@ -68,7 +78,7 @@ function Home() {
                             );
                         })}
                     </div>
-                    <a href="/products">Xem tất cả</a>
+                    <a href={configPaths.products}>Xem tất cả</a>
                 </div>
             </div>
             <div className="home-featured-product">
@@ -109,7 +119,7 @@ function Home() {
                             );
                         })}
                     </div>
-                    <a href="/products">Xem tất cả</a>
+                    <a href={configPaths.products}>Xem tất cả</a>
                 </div>
             </div>
             <div className="home-lastest-product-image">
