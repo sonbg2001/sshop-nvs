@@ -17,7 +17,7 @@
         "web-vitals": "^2.1.4",
         "with-router": "^1.0.1"
     },
-    "homepage": "https://sonbg2001.github.io/s_shop",
+    "homepage": "https://sonbg2001.github.io/s_shop/",
     "scripts": {
         "start": "react-app-rewired start",
         "build": "react-app-rewired build",
