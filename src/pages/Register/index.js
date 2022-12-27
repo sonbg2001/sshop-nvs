@@ -10,16 +10,17 @@ function Register() {
             getUsersByParams({ username })
                 .then(function (data) {
                     if (data.length > 0) {
-                        console.log('Tài khoản đã tồn tại');
+                        alert('Tài khoản đã tồn tại');
                     } else if (repassword !== password) {
-                        console.log('Nhập lại mật khẩu không chính xác!!!');
+                        alert('Nhập lại mật khẩu không chính xác!!!');
                     } else {
                         addUser({
                             username,
                             password,
                         })
                             .then(function (response) {
-                                console.log('Tạo tài khoản thành công, chuyển qua đăng nhập!');
+                                alert('Tạo tài khoản thành công, chuyển qua đăng nhập!');
+                                window.location.assign('http://localhost:3001/login');
                                 console.log(response);
                             })
                             .catch(function (error) {

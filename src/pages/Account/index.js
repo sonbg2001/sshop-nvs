@@ -1,16 +1,24 @@
 import { useState } from 'react';
-
+import { editUserById } from '~/utils';
 function Account() {
-    // function img_pathUrl(input) {
-    //     if (input.files && input.files[0]) {
-    //         var reader = new FileReader();
-    //         // reader.onload = function (e) {
-    //         //     $('#product-image-preview').attr('src', e.target.result);
-    //         // }
-    //         reader.readAsDataURL(input.files[0]);
-    //     }
-    // };
     const [avatar, setAvatar] = useState('');
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+    function handleSubmit(e) {
+        console.log(user);
+        editUserById(user, user.id)
+            .then(function (response) {
+                console.log(response);
+                localStorage.setItem('user', JSON.stringify(user));
+                setUser(JSON.parse(localStorage.getItem('user')));
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
+        alert('Cập nhật thành công!!');
+        window.location.assign('http://localhost:3001');
+        e.preventDefault();
+    }
     return (
         <section id="login" className="login">
             <div className="login-container">
@@ -19,18 +27,18 @@ function Account() {
                         <h1>Thông tin tài khoản</h1>
                     </div>
                     <div className="login-form">
-                        <form action="/">
+                        <form action="/" onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label htmlFor="name">Tên khách hàng</label>
                                 <input
                                     type="name"
                                     className="form-control"
                                     id="name"
-                                    placeholder="Tên"
+                                    placeholder={user.name}
                                     onChange={(e) => {
-                                        // setname(e.target.value);
+                                        user.name = e.target.value;
                                     }}
-                                    readOnly
+                                    // readOnly
                                 />
                             </div>
 
@@ -40,9 +48,9 @@ function Account() {
                                     type="email"
                                     className="form-control"
                                     id="email"
-                                    placeholder="Email"
+                                    placeholder={user.email}
                                     onChange={(e) => {
-                                        // setemail(e.target.value);
+                                        user.email = e.target.value;
                                     }}
                                 />
                             </div>
@@ -52,9 +60,10 @@ function Account() {
                                     type="tel"
                                     className="form-control"
                                     id="phone"
-                                    placeholder="Phone number"
+                                    placeholder={user.phone}
                                     onChange={(e) => {
-                                        // setphone(e.target.value);
+                                        user.phone = e.target.value;
+                                        console.log(user);
                                     }}
                                 />
                             </div>
@@ -62,18 +71,17 @@ function Account() {
                             <div className="form-group">
                                 <select name="calc_shipping_provinces" required="">
                                     <option value="">Tỉnh / Thành phố</option>
-                                    <option value="">Hà Nội</option>
+                                    <option value="Hà Nội">Hà Nội</option>
+                                    <option value="Bắc Giang">Bắc Giang</option>
                                 </select>
                                 <select name="calc_shipping_district" required="">
                                     <option value="">Quận / Huyện</option>
-                                    <option value="">Hà Đông</option>
+                                    <option value="Hà Đông">Hà Đông</option>
                                 </select>
                                 <select name="calc_shipping_district" required="">
-                                    <option value="">Quận / Huyện</option>
-                                    <option value="">Mỗ lao</option>
+                                    <option value="">Thị trấn / Xã</option>
+                                    <option value="Mỗ lao">Mỗ lao</option>
                                 </select>
-                                <input name="" type="hidden" value="" />
-                                <input name="" type="hidden" value="" />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="adressnote">Thông tin địa chỉ chi tiết</label>
@@ -95,19 +103,25 @@ function Account() {
                                     className="form-control"
                                     id="avatar"
                                     onChange={(e) => {
+                                        // user.avatar = e.target.value;
                                         setAvatar(URL.createObjectURL(e.target.files[0]));
+                                    }}
+                                />
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Link ảnh"
+                                    onChange={(e) => {
+                                        user.avatar = e.target.value;
+                                        setAvatar(e.target.value);
                                     }}
                                 />
                                 <img src={avatar} alt="" style={{ height: '150px' }}></img>
                             </div>
                             <div className="form-group form-group-button">
-                                <button id="btn-login" type="submit" className="btn btn-login" value="Login">
-                                    Login
+                                <button id="btn-login" type="submit" className="btn btn-login" value="update">
+                                    Cập nhật
                                 </button>
-                            </div>
-                            <div className="form-group form-group-link">
-                                <a href="/register">Tạo tài khoản mới mới</a>
-                                <a href="/">Quên mật khẩu?</a>
                             </div>
                         </form>
                     </div>

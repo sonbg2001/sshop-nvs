@@ -1,13 +1,20 @@
+import { useEffect, useState } from 'react';
+
 function AdminProduct() {
+    const [showAddForm, setShowAddForm] = useState(false);
+    const [product, setProduct] = useState({});
+    useEffect(() => {}, [product.image]);
     return (
         <section id="product" className="product">
             <div className="product-container">
-                {true && (
+                {showAddForm && (
                     <div className="product-add">
                         <div className="product-add-container">
                             <div className="product-add-title">
                                 <h1>Thêm sản phẩm</h1>
-                                <button className="btn btn-danger">Close</button>
+                                <button className="btn btn-danger" onClick={() => setShowAddForm(false)}>
+                                    Close
+                                </button>
                             </div>
                             <div className="product-add-form">
                                 <div className="product-add-form-container">
@@ -35,11 +42,11 @@ function AdminProduct() {
                                         />
                                     </div>
                                     <div className="product-add-form-input">
-                                        <label htmlFor="product-discount">Giảm giá:</label>
+                                        <label htmlFor="product-quantity">Số lượng</label>
                                         <input
                                             type="text"
-                                            name="product-discount"
-                                            id="product-discount"
+                                            name="product-quantity"
+                                            id="product-quantity"
                                             placeholder="Enter Product Discount"
                                         />
                                     </div>
@@ -60,20 +67,24 @@ function AdminProduct() {
                                             placeholder="Mô tả"
                                         ></textarea>
                                     </div>
-                                    <div className="product-add-form-input">
+                                    {/* <div className="product-add-form-input">
                                         <label htmlFor="product-image">Ảnh sản phẩm:</label>
                                         <img
                                             src="https://luv.vn/wp-content/uploads/2021/08/hinh-anh-gai-xinh-16.jpg"
                                             alt=""
                                         />
+                                        <input type="file" className="product-image" id="product-image" />
+                                    </div> */}
+                                    <div className="product-add-form-input">
+                                        <label>Link ảnh:</label>
+                                        <img src={product.image} alt="" />
                                         <input
-                                            type="file"
-                                            className="product-image"
-                                            id="product-image"
-                                            // onChange={(e) => {
-                                            //     console.log(e.target.files);
-                                            //     setAvatar(URL.createObjectURL(e.target.files[0]));
-                                            // }}
+                                            type="text"
+                                            placeholder="link ảnh"
+                                            onChange={(e) => {
+                                                product.image = e.target.value;
+                                                // setProduct(product);
+                                            }}
                                         />
                                     </div>
                                 </div>
@@ -89,7 +100,14 @@ function AdminProduct() {
                 )}
                 <div className="product-header">
                     <h1 className="heading">Product</h1>
-                    <button className="btn btn-primary">Thêm sản phẩm</button>
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => {
+                            setShowAddForm(true);
+                        }}
+                    >
+                        Thêm sản phẩm
+                    </button>
                 </div>
                 <div className="product-table">
                     <table>
@@ -100,7 +118,7 @@ function AdminProduct() {
                                 <th>Image</th>
                                 <th>Description</th>
                                 <th>Price</th>
-                                <th>Giảm giá</th>
+                                <th>Số lượng</th>
                                 <th>Chỉnh sửa</th>
                                 <th>Remove</th>
                             </tr>
@@ -119,7 +137,7 @@ function AdminProduct() {
                                 </td>
                                 <td>Mô tả</td>
                                 <td>giá</td>
-                                <td>giảm 3%</td>
+                                <td>số lươnbgj</td>
                                 <td>
                                     <button className="btn btn-danger">Chỉnh sửa</button>
                                 </td>

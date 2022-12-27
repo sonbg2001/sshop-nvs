@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import configPaths from '~/routes/configPaths';
 import { getProductById } from '~/utils';
 function ProductDetail() {
@@ -75,7 +75,11 @@ function ProductDetail() {
                         </div>
 
                         <div>
-                            <button className="btn btn-active">Mua ngay</button>
+                            <Link to={'/cart'}>
+                                <button className="btn btn-active" onClick={handleAddToCart}>
+                                    Mua ngay
+                                </button>
+                            </Link>
                             <button className="btn btn-cart" onClick={handleAddToCart}>
                                 Thêm vào giỏ hàng
                             </button>

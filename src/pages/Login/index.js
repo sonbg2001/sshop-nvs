@@ -9,13 +9,15 @@ function Login() {
                 let user = null;
                 if (data.length > 0) {
                     user = data[0];
-                    if (user.role === 'admin') console.log('admin');
-                    else console.log('user');
 
                     localStorage.setItem('user', JSON.stringify(user));
 
                     alert('Đăng nhập thành công');
-                    window.location.assign('http://localhost:3001');
+                    if (user.role === 'admin') {
+                        window.location.assign('http://localhost:3001/admin');
+                    } else {
+                        window.location.assign('http://localhost:3001');
+                    }
                 } else {
                     alert('Sai thông tin đăng nhập');
                 }

@@ -30,8 +30,23 @@ export function getUserById(id) {
 }
 
 export function addUser(params) {
+    console.log(params);
     return request
         .post('users', params)
+        .then(function (response) {
+            return response.data;
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+            return {};
+        });
+}
+
+export function editUserById(params, id) {
+    console.log(params);
+    return request
+        .patch('users/' + id, params)
         .then(function (response) {
             return response.data;
         })

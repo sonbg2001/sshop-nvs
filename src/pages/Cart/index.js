@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import configPaths from '~/routes/configPaths';
 function Cart() {
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
     const [changeQuantity, setChangeQuantity] = useState('');
     const [sumCart, setSumCart] = useState(0);
     function formatCash(str) {
@@ -15,6 +15,7 @@ function Cart() {
     }
     function handleDeleteAllCart() {
         setCart([]);
+        setSumCart(0);
         localStorage.removeItem('cart');
     }
 
