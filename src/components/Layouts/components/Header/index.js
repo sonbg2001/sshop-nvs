@@ -8,7 +8,7 @@ import configPaths from '~/routes/configPaths';
 const cs = classNames.bind(styles);
 function Header() {
     let user = JSON.parse(localStorage.getItem('user'));
-
+    let cart = JSON.parse(localStorage.getItem('cart'));
     function handleLogout() {
         localStorage.removeItem('user');
     }
@@ -104,8 +104,8 @@ function Header() {
 
                                     <div className={cs('header-cart')}>
                                         <div id="cart-mini">
-                                            <span id="cart-count">Giỏ hàng(0)</span>
-                                            <span id="cart-total">/ 0đ</span>
+                                            <span id="cart-count">Giỏ hàng({(cart && cart.length) || 0})</span>
+                                            {/* <span id="cart-total">/ 0đ</span> */}
                                         </div>
 
                                         <Link to={configPaths.cart} id="btn-cart" className={cs('btn btn-login')}>

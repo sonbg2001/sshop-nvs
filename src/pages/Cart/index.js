@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import configPaths from '~/routes/configPaths';
 function Cart() {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
@@ -67,7 +68,14 @@ function Cart() {
                                             <td>{item.product.name}</td>
 
                                             <td>
-                                                <img src={item.product.image} height="40" alt="" />
+                                                <Link to={'/product-detail/' + item.product.id}>
+                                                    <img
+                                                        style={{ transform: ' translateY(35%)' }}
+                                                        src={item.product.image}
+                                                        height="40"
+                                                        alt=""
+                                                    />
+                                                </Link>
                                             </td>
                                             <td>{formatCash(item.product.price + '')}đ</td>
                                             <td>

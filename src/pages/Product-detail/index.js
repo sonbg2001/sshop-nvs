@@ -13,12 +13,20 @@ function ProductDetail() {
         cart = JSON.parse(localStorage.getItem('cart'));
         if (!cart) {
             cart = [{ product, productQuantity }];
-            localStorage.setItem('cart', JSON.stringify(cart));
         } else {
-            cart.push({ product, productQuantity });
-            localStorage.setItem('cart', JSON.stringify(cart));
+            let check = true;
+            for (let item of cart) {
+                if (item.product.id === product.id) {
+                    let d = Number(item.productQuantity) + Number(productQuantity);
+                    check = false;
+                    item.productQuantity = d;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    break;
+                }
+            }
+            if (check) cart.push({ product, productQuantity });
         }
-        console.log(cart);
+        localStorage.setItem('cart', JSON.stringify(cart));
     }
 
     useEffect(() => {
