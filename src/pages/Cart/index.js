@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import configPaths from '~/routes/configPaths';
 function Cart() {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
-    const [test, setTest] = useState('');
+    const [changeQuantity, setChangeQuantity] = useState('');
+    const [sumCart, setSumCart] = useState(0);
     function formatCash(str) {
         return str
             .split('')
@@ -15,10 +16,14 @@ function Cart() {
         setCart([]);
         localStorage.removeItem('cart');
     }
+
     useEffect(() => {
         setCart(JSON.parse(localStorage.getItem('cart')));
+        let sum = 0;
+        for (let item of cart) sum = sum + item.product.price * Number(item.productQuantity);
+        setSumCart(sum);
         // eslint-disable-next-line
-    }, [test]);
+    }, [changeQuantity]);
     return (
         <section className="cart">
             <div className="cart-container">
@@ -64,7 +69,7 @@ function Cart() {
                                             <td>
                                                 <img src={item.product.image} height="40" alt="" />
                                             </td>
-                                            <td>{formatCash(item.product.price * 1000 + '')}đ</td>
+                                            <td>{formatCash(item.product.price + '')}đ</td>
                                             <td>
                                                 <input
                                                     type="number"
@@ -72,20 +77,16 @@ function Cart() {
                                                     onChange={(e) => {
                                                         cart[index].productQuantity =
                                                             e.target.value > 0 ? e.target.value : 1;
-                                                        console.log(cart);
                                                         localStorage.setItem('cart', JSON.stringify(cart));
-                                                        setTest(cart);
-                                                        // item.productQuantity = e.target.value;
-                                                        console.log('item.productQuantity:', item.productQuantity);
+                                                        setChangeQuantity(cart);
                                                     }}
                                                     value={Number(item.productQuantity)}
                                                 />
                                             </td>
                                             {/* <td>${totalItem.toFixed(3)}đ</td> */}
                                             <td>
-                                                {formatCash(
-                                                    1000 * item.product.price * Number(item.productQuantity) + '',
-                                                ) || 0}
+                                                {formatCash(item.product.price * Number(item.productQuantity) + '') ||
+                                                    0}
                                                 đ
                                             </td>
 
@@ -104,7 +105,7 @@ function Cart() {
                 </div>
                 <div className="cart-total-price">
                     <div id="cart-origin-total">Tổng tiền: </div>
-                    <div id="cart-total-checkout">Pippip</div>
+                    <div id="cart-total-checkout"> {formatCash(sumCart + '')}đ</div>
                 </div>
                 <div className="cart-button">
                     <a href="/" className="btn btn-cart">

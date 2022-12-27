@@ -15,9 +15,9 @@ function Login() {
                     localStorage.setItem('user', JSON.stringify(user));
 
                     alert('Đăng nhập thành công');
+                    window.location.assign('http://localhost:3001');
                 } else {
                     alert('Sai thông tin đăng nhập');
-                    e.preventDefault();
                 }
             })
             .catch(function (error) {
