@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 function AdminProduct() {
     const [showAddForm, setShowAddForm] = useState(false);
-    const [product, setProduct] = useState({});
+    const [product] = useState({});
     useEffect(() => {}, [product.image]);
     return (
         <section id="product" className="product">
