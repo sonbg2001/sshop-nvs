@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getProductsByParams } from '~/utils';
+import { formatCash } from '~/components/Format';
 function Products() {
     const [listProduct, setListProduct] = useState([]);
     const [sortType, setSortType] = useState('default');
@@ -12,38 +13,31 @@ function Products() {
         case 'nameasc':
             params._sort = 'name';
             params._order = 'asc';
-
             break;
         case 'namedesc':
             params._sort = 'name';
             params._order = 'desc';
-
             break;
         case 'priceasc':
             params._sort = 'price';
             params._order = 'asc';
-
             break;
         case 'pricedesc':
             params._sort = 'price';
             params._order = 'desc';
-
             break;
         case 'new':
             params._sort = 'id';
             params._order = 'desc';
-
             break;
         default:
         // code block
     }
-
     params.type_like = filter;
     useEffect(() => {
         getProductsByParams(params)
             .then(function (response) {
                 setListProduct(response);
-                // console.log(response);
             })
             .catch(function (error) {
                 // handle error
@@ -187,33 +181,7 @@ function Products() {
                                 </ul>
                             </div>
                         </div>
-                        {/* <div className="product-body-filter-color">
-                            <h3>Màu</h3>
-                            <div className="product-body-filter-color-list">
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" id="color-1" name="color-1" />
-                                        <label htmlFor="color-1">Đỏ</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color-2" name="color-2" />
-                                        <label htmlFor="color-2">Xanh lam</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color-3" name="color-3" />
-                                        <label htmlFor="color-3">Xanh lá</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color-4" name="color-4" />
-                                        <label htmlFor="color-4">Vàng</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color-5" name="color-5" />
-                                        <label htmlFor="color-5">Đen</label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> */}
+
                         <div className="product-body-filter-button">
                             <button type="submit" className="btn btn-cart">
                                 Lọc
@@ -223,7 +191,7 @@ function Products() {
                     <div id="product-body-list">
                         {listProduct.map((product) => {
                             let totalsale = product.price - (product.price * product.discount) / 100;
-                            totalsale = totalsale.toFixed(3);
+                            totalsale = (totalsale / 1000).toFixed() * 1000;
                             return (
                                 <Link
                                     key={product.id}
@@ -242,7 +210,7 @@ function Products() {
                                     </div>
                                     <div className="product-body-list-item-price">
                                         <h4>
-                                            <span>{product.price}.000đ</span> {totalsale}đ
+                                            <span>{formatCash(product.price + '')}đ</span> {formatCash(totalsale + '')}đ
                                         </h4>
                                     </div>
                                     <div className="product-body-list-item-button">
