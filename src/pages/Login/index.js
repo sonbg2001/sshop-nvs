@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getUsersByParams } from '~/utils';
 function Login() {
     const [username, setUsername] = useState('');
@@ -50,7 +51,7 @@ function Login() {
                                     onChange={(e) => {
                                         setUsername(e.target.value);
                                     }}
-                                    placeholder="Username"
+                                    placeholder="Tên đăng nhập"
                                 />
                             </div>
                             <div className="form-group">
@@ -60,7 +61,7 @@ function Login() {
                                     type="password"
                                     className="form-control"
                                     id="password"
-                                    placeholder="Password"
+                                    placeholder="Mật khẩu"
                                     onChange={(e) => {
                                         setPassword(e.target.value);
                                     }}
@@ -68,12 +69,12 @@ function Login() {
                             </div>
                             <div className="form-group form-group-button">
                                 <button id="btn-login" type="submit" className="btn btn-login" value="Login">
-                                    Login
+                                    Đăng nhập
                                 </button>
                             </div>
                             <div className="form-group form-group-link">
-                                <a href="/register">Tạo tài khoản mới mới</a>
-                                <a href="/">Quên mật khẩu?</a>
+                                <Link to="/register">Tạo tài khoản mới mới</Link>
+                                <Link to="/">Quên mật khẩu?</Link>
                             </div>
                         </form>
                     </div>

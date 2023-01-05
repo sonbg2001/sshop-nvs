@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { getUsersByParams, addUser } from '~/utils';
 import configPaths from '~/routes/configPaths';
+import { Link } from 'react-router-dom';
 function Register() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -98,7 +99,7 @@ function Register() {
                                 </button>
                             </div>
                             <div className="form-group form-group-link form-group-link-register">
-                                <a href={configPaths.login}>Bạn đã có tài khoản?Chuyển qua đăng nhập</a>
+                                <Link to={configPaths.login}>Bạn đã có tài khoản?Chuyển qua đăng nhập</Link>
                             </div>
                         </form>
                     </div>

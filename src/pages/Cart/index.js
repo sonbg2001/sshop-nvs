@@ -1,18 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import configPaths from '~/routes/configPaths';
+import { formatCash } from '~/components/Format';
 function Cart() {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
     const [changeQuantity, setChangeQuantity] = useState('');
     const [sumCart, setSumCart] = useState(0);
-    function formatCash(str) {
-        return str
-            .split('')
-            .reverse()
-            .reduce((prev, next, index) => {
-                return (index % 3 ? next : next + '.') + prev;
-            });
-    }
+
     function handleDeleteAllCart() {
         setCart([]);
         setSumCart(0);

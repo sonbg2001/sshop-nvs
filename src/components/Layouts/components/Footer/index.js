@@ -7,24 +7,24 @@ function Footer() {
                     <div className="footer-content-top">
                         <div className="footer-content-top-quick-link">
                             <div className="footer-content-top-quick-link-title">
-                                <h3>Quick Links</h3>
+                                <h3>Đường dẫn</h3>
                             </div>
                             <div className="footer-content-top-quick-link-content">
                                 <ul>
                                     <li>
-                                        <a href="/">Home</a>
+                                        <a href="/">Trang chủ</a>
                                     </li>
                                     <li>
-                                        <a href={configPaths.brand}>About Us</a>
+                                        <a href={configPaths.brand}>Giới thiệu</a>
                                     </li>
                                     <li>
-                                        <a href="/contact">Contact Us</a>
+                                        <a href="/contact">Liên hệ</a>
                                     </li>
                                     <li>
-                                        <a href="/">Privacy Policy</a>
+                                        <a href="/">Chính sách</a>
                                     </li>
                                     <li>
-                                        <a href="/">Terms of Use</a>
+                                        <a href="/">Điều khoản</a>
                                     </li>
                                 </ul>
                             </div>

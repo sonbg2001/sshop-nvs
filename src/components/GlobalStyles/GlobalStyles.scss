@@ -9,8 +9,6 @@
 // Font awesome cdn
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css);
 
-// <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-
 // Slider
 @import url(https://unpkg.com/swiper@8/swiper-bundle.min.css);
 
@@ -249,18 +247,12 @@ ul {
     align-items: center;
 }
 
-.header-logo {
-}
-
 .header-logo a {
     font-size: 36px;
     font-weight: bold;
     color: var(--black);
     text-decoration: none;
     font-style: italic;
-}
-
-.header-search {
 }
 
 .header-search input {

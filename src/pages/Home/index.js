@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import configPaths from '~/routes/configPaths';
 import { getProductsByParams } from '~/utils';
+import { formatCash } from '~/components/Format';
 function Home() {
     const [listFeaturedProduct, setListFeaturedProduct] = useState([]);
     const [listNewProduct, setListNewProduct] = useState([]);
@@ -48,7 +49,7 @@ function Home() {
                     <div id="product-body-list" className="home-featured-product-container-products">
                         {listFeaturedProduct.map((product, index) => {
                             let totalsale = product.price - (product.price * product.discount) / 100;
-                            totalsale = totalsale.toFixed(3);
+                            totalsale = (totalsale / 1000).toFixed() * 1000;
                             return (
                                 <Link
                                     key={index}
@@ -67,7 +68,7 @@ function Home() {
                                     </div>
                                     <div className="home-featured-product-container-products-product-price product-body-list-item-price">
                                         <h4>
-                                            <span>{product.price}.000đ</span> {totalsale}đ
+                                            <span>{formatCash(product.price + '')}đ</span> {formatCash(totalsale + '')}đ
                                         </h4>
                                     </div>
                                     <div className="home-featured-product-container-products-product-button">
@@ -89,7 +90,7 @@ function Home() {
                     <div id="product-body-list" className="home-featured-product-container-products">
                         {listNewProduct.slice(0, 8).map((product, index) => {
                             let totalsale = product.price - (product.price * product.discount) / 100;
-                            totalsale = totalsale.toFixed(3);
+                            totalsale = (totalsale / 1000).toFixed() * 1000;
                             return (
                                 <Link
                                     key={index}
@@ -108,7 +109,7 @@ function Home() {
                                     </div>
                                     <div className="home-featured-product-container-products-product-price product-body-list-item-price">
                                         <h4>
-                                            <span>{product.price}.000đ</span> {totalsale}đ
+                                            <span>{formatCash(product.price + '')}đ</span> {formatCash(totalsale + '')}đ
                                         </h4>
                                     </div>
                                     <div className="home-featured-product-container-products-product-button">

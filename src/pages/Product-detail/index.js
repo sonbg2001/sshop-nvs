@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { formatCash } from '~/components/Format';
 import configPaths from '~/routes/configPaths';
 import { getProductById } from '~/utils';
 function ProductDetail() {
@@ -41,6 +42,7 @@ function ProductDetail() {
             });
         // eslint-disable-next-line
     }, []);
+
     return (
         <section className="product-detail">
             <div className="product-detail-container">
@@ -58,8 +60,8 @@ function ProductDetail() {
                     <div className="product-detail-info">
                         <h1>{product.name}</h1>
                         <p>{product.description}</p>
-                        <p>Giá: {product.price}đ</p>
-                        {/* {product.price.toFixed(3)} */}
+                        <p style={{ color: 'red' }}>Giá gốc: {formatCash(product.price + '')}đ</p>
+                        <p>Giá sale: {formatCash((product.price * (100 - product.discount)) / 100 + '')}đ</p>
                         <p>Giảm giá: {product.discount}%</p>
                         <div>
                             <label htmlFor="quantity">Số lượng:</label>

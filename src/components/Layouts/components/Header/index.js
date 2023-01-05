@@ -8,9 +8,7 @@ const cs = classNames.bind(styles);
 function Header() {
     let user = JSON.parse(localStorage.getItem('user'));
     let cart = JSON.parse(localStorage.getItem('cart'));
-    function handleLogout() {
-        localStorage.removeItem('user');
-    }
+
     return (
         <div>
             <div className={cs('header-wrapper')}>
@@ -93,7 +91,16 @@ function Header() {
                                                 </a>
                                             </div>
                                             <div className={cs('header-user-funtion-item')}>
-                                                <a href={configPaths.login} onClick={handleLogout}>
+                                                <a
+                                                    href={configPaths.login}
+                                                    onClick={(e) => {
+                                                        if (window.confirm('Bạn có muốn đăng suất không?')) {
+                                                            localStorage.removeItem('user');
+                                                        } else {
+                                                            e.preventDefault();
+                                                        }
+                                                    }}
+                                                >
                                                     <i className={cs('fa-solid fa-sign-out-alt')}></i>
                                                     <span>Đăng xuất</span>
                                                 </a>
@@ -110,9 +117,9 @@ function Header() {
                                         <Link to={configPaths.cart} id="btn-cart" className={cs('btn btn-login')}>
                                             <i className={cs('fa-solid fa-cart-shopping')} />
                                         </Link>
-                                        <button id="btn-wishlist" className={cs('btn btn-login')}>
+                                        {/* <button id="btn-wishlist" className={cs('btn btn-login')}>
                                             <i className={cs('fa-solid fa-heart')}></i>
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </>
                             )}
