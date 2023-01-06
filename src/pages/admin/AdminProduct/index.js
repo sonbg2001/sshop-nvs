@@ -3,7 +3,12 @@ import { useEffect, useState } from 'react';
 function AdminProduct() {
     const [showAddForm, setShowAddForm] = useState(false);
     const [product] = useState({});
-    useEffect(() => {}, [product.image]);
+    useEffect(() => {
+        //Cleanup function
+        return () => {
+            console.log('cleanup');
+        };
+    }, [product.image]);
     return (
         <section id="product" className="product">
             <div className="product-container">

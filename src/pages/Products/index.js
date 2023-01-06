@@ -2,49 +2,49 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { formatCash } from '~/components/Format';
 import datafetch from '~/datafetch';
-function Products() {
-    //Data render
-    const sortBySelectData = [
-        {
-            value: 'default',
-            text: 'Mặc định',
-        },
-        {
-            value: 'nameasc',
-            text: 'Tên (A - Z)',
-        },
-        {
-            value: 'namedesc',
-            text: 'Tên (Z - A)',
-        },
-        {
-            value: 'priceasc',
-            text: 'Giá (Thấp > Cao)',
-        },
-        {
-            value: 'pricedesc',
-            text: 'Giá (Cao > Thấp)',
-        },
-        {
-            value: 'new',
-            text: 'Mới nhất',
-        },
-    ];
-    const brandData = [
-        {
-            id: 'brand-1',
-            text: 'Thương hiệu 1',
-        },
-        {
-            id: 'brand-2',
-            text: 'Thương hiệu 2',
-        },
-        {
-            id: 'brand-3',
-            text: 'Thương hiệu 3',
-        },
-    ];
 
+//Data render
+const sortBySelectData = [
+    {
+        value: 'default',
+        text: 'Mặc định',
+    },
+    {
+        value: 'nameasc',
+        text: 'Tên (A - Z)',
+    },
+    {
+        value: 'namedesc',
+        text: 'Tên (Z - A)',
+    },
+    {
+        value: 'priceasc',
+        text: 'Giá (Thấp > Cao)',
+    },
+    {
+        value: 'pricedesc',
+        text: 'Giá (Cao > Thấp)',
+    },
+    {
+        value: 'new',
+        text: 'Mới nhất',
+    },
+];
+const brandData = [
+    {
+        id: 'brand-1',
+        text: 'Thương hiệu 1',
+    },
+    {
+        id: 'brand-2',
+        text: 'Thương hiệu 2',
+    },
+    {
+        id: 'brand-3',
+        text: 'Thương hiệu 3',
+    },
+];
+function Products() {
     const [brandChecked, setBrandChecked] = useState([]);
     const [listProduct, setListProduct] = useState([]);
     const [sortType, setSortType] = useState('default');
@@ -61,6 +61,10 @@ function Products() {
         products = datafetch.getAllProduct();
         products = datafetch.getProductBySortAndFilter(sortType, filter);
         setListProduct([...products]);
+        //Cleanup function
+        return () => {
+            console.log('cleanup');
+        };
     }, [filter, sortType]);
 
     //Xử lý brand checked
@@ -132,37 +136,27 @@ function Products() {
                                 <option value="shoe">Giày</option>
                             </select>
                         </div>
-                        <div className="product-body-filter-brand">
-                            <h3>Thương hiệu</h3>
-                            <div className="product-body-filter-brand-list">
-                                <ul>
-                                    {brandData.map((brand) => (
-                                        <li key={brand.id}>
-                                            <input
-                                                type="checkbox"
-                                                id={brand.id}
-                                                checked={brandChecked.includes(brand.id)}
-                                                onChange={() => handleCheckBrand(brand.id)}
-                                            />
-                                            <label htmlFor={brand.id}>{brand.text}</label>
-                                        </li>
-                                    ))}
-                                    {/* <li>
-                                        <input type="checkbox" id="brand-1" name="brand-1" />
-                                        <label htmlFor="brand-1">Thương hiệu 1</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="brand-2" name="brand-2" />
-                                        <label htmlFor="brand-2">Thương hiệu 2</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="brand-3" name="brand-3" />
-                                        <label htmlFor="brand-3">Thương hiệu 3</label>
-                                    </li> */}
-                                </ul>
+                        {false && (
+                            <div className="product-body-filter-brand">
+                                <h3>Thương hiệu</h3>
+                                <div className="product-body-filter-brand-list">
+                                    <ul>
+                                        {brandData.map((brand) => (
+                                            <li key={brand.id}>
+                                                <input
+                                                    type="checkbox"
+                                                    id={brand.id}
+                                                    checked={brandChecked.includes(brand.id)}
+                                                    onChange={() => handleCheckBrand(brand.id)}
+                                                />
+                                                <label htmlFor={brand.id}>{brand.text}</label>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div className="product-body-filter-price">
+                        )}
+                        {/* <div className="product-body-filter-price">
                             <h3>Giá</h3>
                             <div className="product-body-filter-price-list">
                                 <ul>
@@ -227,7 +221,7 @@ function Products() {
                             <button type="submit" className="btn btn-cart">
                                 Lọc
                             </button>
-                        </div>
+                        </div> */}
                     </div>
                     <div id="product-body-list">
                         {listProduct.map((product) => {

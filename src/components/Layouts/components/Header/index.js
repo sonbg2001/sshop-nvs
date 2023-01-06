@@ -3,11 +3,25 @@ import { Link } from 'react-router-dom';
 import Search from '../Search';
 import styles from './Header.module.scss';
 import configPaths from '~/routes/configPaths';
-
+import { useEffect, useState } from 'react';
 const cs = classNames.bind(styles);
 function Header() {
     let user = JSON.parse(localStorage.getItem('user'));
     let cart = JSON.parse(localStorage.getItem('cart'));
+    const [cartlength, setCartlength] = useState(0);
+    useEffect(() => {
+        // Xử lý cùn
+        const timeId = setInterval(() => {
+            let c = JSON.parse(localStorage.getItem('cart'));
+            if (!c) c = 0;
+            else c = c.length;
+            setCartlength(c);
+        }, 2000);
+
+        //Cleanup function
+        return () => clearInterval(timeId);
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <div>
@@ -110,7 +124,9 @@ function Header() {
 
                                     <div className={cs('header-cart')}>
                                         <div id="cart-mini">
-                                            <span id="cart-count">Giỏ hàng({(cart && cart.length) || 0})</span>
+                                            <span id="cart-count">
+                                                Giỏ hàng({cartlength || (cart && cart.length) || 0})
+                                            </span>
                                             {/* <span id="cart-total">/ 0đ</span> */}
                                         </div>
 

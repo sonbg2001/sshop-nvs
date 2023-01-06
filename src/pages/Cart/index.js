@@ -18,6 +18,11 @@ function Cart() {
         let sum = 0;
         for (let item of cart) sum = sum + item.product.price * Number(item.productQuantity);
         setSumCart(sum);
+        //Cleanup function
+        return () => {
+            console.log('cleanup');
+        };
+
         // eslint-disable-next-line
     }, [changeQuantity]);
     return (

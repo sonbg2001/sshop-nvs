@@ -32,6 +32,12 @@ function ProductDetail() {
 
     useEffect(() => {
         setProduct(datafetch.getProductById(id));
+
+        //Cleanup function
+        return () => {
+            console.log('cleanup');
+        };
+
         // eslint-disable-next-line
     }, []);
 
