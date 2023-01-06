@@ -1,32 +1,22 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getUsersByParams } from '~/utils';
+import datafetch from '~/datafetch';
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     function handleSubmit(e) {
-        getUsersByParams({ username, password })
-            .then(function (data) {
-                let user = null;
-                if (data.length > 0) {
-                    user = data[0];
-
-                    localStorage.setItem('user', JSON.stringify(user));
-
-                    alert('Đăng nhập thành công');
-                    if (user.role === 'admin') {
-                        window.location.assign('http://localhost:3001/admin');
-                    } else {
-                        window.location.assign('http://localhost:3001');
-                    }
-                } else {
-                    alert('Sai thông tin đăng nhập');
-                }
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
+        let user = datafetch.getUserByUsernameAndPassword(username, password);
+        if (user.id) {
+            localStorage.setItem('user', JSON.stringify(user));
+            alert('Đăng nhập thành công');
+            if (user.role === 'admin') {
+                window.location.assign('/admin');
+            } else {
+                window.location.assign('/');
+            }
+        } else {
+            alert('Sai thông tin đăng nhập');
+        }
 
         e.preventDefault();
     }

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { formatCash } from '~/components/Format';
 import configPaths from '~/routes/configPaths';
-import { getProductById } from '~/utils';
+import datafetch from '~/datafetch';
 function ProductDetail() {
     const [product, setProduct] = useState('');
     const [productQuantity, setProductQuantity] = useState(1);
@@ -31,15 +31,7 @@ function ProductDetail() {
     }
 
     useEffect(() => {
-        getProductById(id)
-            .then(function (response) {
-                // console.log(response);
-                setProduct(response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
+        setProduct(datafetch.getProductById(id));
         // eslint-disable-next-line
     }, []);
 

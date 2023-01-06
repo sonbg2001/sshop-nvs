@@ -1,22 +1,14 @@
 import { useState } from 'react';
-import { editUserById } from '~/utils';
+import datafetch from '~/datafetch';
 function Account() {
     const [avatar, setAvatar] = useState('');
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
     function handleSubmit(e) {
         console.log(user);
-        editUserById(user, user.id)
-            .then(function (response) {
-                console.log(response);
-                localStorage.setItem('user', JSON.stringify(user));
-                setUser(JSON.parse(localStorage.getItem('user')));
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
+        setUser(JSON.parse(localStorage.getItem('user')));
+        datafetch.editUser(user);
         alert('Cập nhật thành công!!');
-        window.location.assign('http://localhost:3001');
+        window.location.assign('/');
         e.preventDefault();
     }
     return (

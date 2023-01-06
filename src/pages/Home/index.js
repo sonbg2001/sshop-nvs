@@ -2,38 +2,21 @@ import Slide from './slide';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import configPaths from '~/routes/configPaths';
-import { getProductsByParams } from '~/utils';
 import { formatCash } from '~/components/Format';
+import datafetch from '~/datafetch';
 function Home() {
     const [listFeaturedProduct, setListFeaturedProduct] = useState([]);
     const [listNewProduct, setListNewProduct] = useState([]);
     useEffect(() => {
-        getProductsByParams({
-            _start: 0,
-            _end: 8,
-            _sort: 'sold',
-        })
-            .then((data) => {
-                setListFeaturedProduct(data);
-            })
-            .catch((e) => {
-                console.log('Error!!!');
-                // return;
-            });
-
-        getProductsByParams({
-            _start: 0,
-            _end: 8,
-            _sort: 'id',
-            _order: 'desc',
-        })
-            .then((data) => {
-                setListNewProduct(data);
-            })
-            .catch((e) => {
-                console.log('Error!!!');
-                // return;
-            });
+        //Fetch sản phẩm nổi bật
+        let products = datafetch.getAllProduct();
+        // console.log('Products', products);
+        products.sort((a, b) => b.sold - a.sold);
+        setListFeaturedProduct(products.slice(0, 8));
+        //Fetch sản phẩm mới
+        products.sort((a, b) => b.id - a.id);
+        setListNewProduct(products.slice(0, 8));
+        // eslint-disable-next-line
     }, []);
 
     return (

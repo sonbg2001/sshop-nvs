@@ -1,39 +1,31 @@
 import { useState } from 'react';
-import { getUsersByParams, addUser } from '~/utils';
 import configPaths from '~/routes/configPaths';
 import { Link } from 'react-router-dom';
+import datafetch from '~/datafetch';
 function Register() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [repassword, setRepassword] = useState('');
     function handleRegister(e) {
+        // e.preventDefault();
+
         if (username && password && repassword) {
-            getUsersByParams({ username })
-                .then(function (data) {
-                    if (data.length > 0) {
-                        alert('Tài khoản đã tồn tại');
-                    } else if (repassword !== password) {
-                        alert('Nhập lại mật khẩu không chính xác!!!');
-                    } else {
-                        addUser({
-                            username,
-                            password,
-                        })
-                            .then(function (response) {
-                                alert('Tạo tài khoản thành công, chuyển qua đăng nhập!');
-                                window.location.assign('http://localhost:3001/login');
-                                console.log(response);
-                            })
-                            .catch(function (error) {
-                                // handle error
-                                console.log(error);
-                            });
-                    }
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                });
+            if (datafetch.getUserByUsername(username).id) {
+                console.log(datafetch.getUserByUsername(username));
+                alert('Tài khoản đã tồn tại');
+            } else if (repassword !== password) {
+                alert('Nhập lại mật khẩu không chính xác!!!');
+            } else {
+                let dat = datafetch.getData;
+                let maxid = dat.users.sort((a, b) => b.id - a.id);
+                console.log(maxid[0].id);
+                dat.users.push({ id: maxid[0].id + 1, username, password });
+                alert('Tạo tài khoản thành công, chuyển qua đăng nhập!');
+
+                console.log(dat);
+                datafetch.saveDatas(dat);
+                window.location.assign('/login');
+            }
         } else {
             alert('Vui lòng nhập đầy đủ thông tin');
             if (!username) document.getElementById('username').focus();
