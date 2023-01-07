@@ -13,25 +13,30 @@ function ProductDetail() {
     let { id } = useParams();
 
     function handleAddToCart() {
-        alert('Đã thêm vào giỏ hàng');
-        let cart = [];
-        cart = JSON.parse(localStorage.getItem('cart'));
-        if (!cart) {
-            cart = [{ product, productQuantity }];
-        } else {
-            let check = true;
-            for (let item of cart) {
-                if (item.product.id === product.id) {
-                    let d = Number(item.productQuantity) + Number(productQuantity);
-                    check = false;
-                    item.productQuantity = d;
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    break;
+        let user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            alert('Đã thêm vào giỏ hàng');
+            let cart = [];
+            cart = JSON.parse(localStorage.getItem('cart'));
+            if (!cart) {
+                cart = [{ product, productQuantity }];
+            } else {
+                let check = true;
+                for (let item of cart) {
+                    if (item.product.id === product.id) {
+                        let d = Number(item.productQuantity) + Number(productQuantity);
+                        check = false;
+                        item.productQuantity = d;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        break;
+                    }
                 }
+                if (check) cart.push({ product, productQuantity });
             }
-            if (check) cart.push({ product, productQuantity });
+            localStorage.setItem('cart', JSON.stringify(cart));
+        } else {
+            if (window.confirm('Đăng nhập để thêm vào giỏ hàng?')) window.location.assign('/login');
         }
-        localStorage.setItem('cart', JSON.stringify(cart));
     }
 
     useEffect(() => {
