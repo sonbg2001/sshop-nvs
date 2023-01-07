@@ -18,8 +18,20 @@ function Header() {
             setCartlength(c);
         }, 2000);
 
+        // const handleCartupdate = () => {
+        //     let c = JSON.parse(localStorage.getItem('cart'));
+        //     if (!c) c = 0;
+        //     else c = c.length;
+        //     setCartlength(c);
+        // }
+
+        // window.addEventListener('cart-update', handleCartupdate);
+
         //Cleanup function
-        return () => clearInterval(timeId);
+        return () => {
+            // window.removeEventListener('cart-update');
+            clearInterval(timeId);
+        };
         // eslint-disable-next-line
     }, []);
 

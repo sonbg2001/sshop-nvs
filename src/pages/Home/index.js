@@ -17,11 +17,6 @@ function Home() {
         products.sort((a, b) => b.id - a.id);
         setListNewProduct(products.slice(0, 8));
 
-        //Cleanup function
-        return () => {
-            console.log('cleanup');
-        };
-
         // eslint-disable-next-line
     }, []);
 

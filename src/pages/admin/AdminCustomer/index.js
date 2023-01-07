@@ -4,11 +4,6 @@ function AdminCustomer() {
     const [listUser, setListUser] = useState([]);
     useEffect(() => {
         setListUser(datafetch.getAllUser());
-
-        //Cleanup function
-        return () => {
-            console.log('cleanup');
-        };
     }, []);
 
     return (

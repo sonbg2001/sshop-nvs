@@ -61,10 +61,6 @@ function Products() {
         products = datafetch.getAllProduct();
         products = datafetch.getProductBySortAndFilter(sortType, filter);
         setListProduct([...products]);
-        //Cleanup function
-        return () => {
-            console.log('cleanup');
-        };
     }, [filter, sortType]);
 
     //Xử lý brand checked
