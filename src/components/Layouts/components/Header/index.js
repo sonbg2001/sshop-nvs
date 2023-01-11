@@ -169,7 +169,7 @@ function Header() {
                                     <Link to={configPaths.brand}>Thương hiệu</Link>
                                 </li>
                                 <li className={cs('header-bottom-nav-list-item')}>
-                                    <a href="/">Trang chủ</a>
+                                    <Link to="/">Trang chủ</Link>
                                 </li>
                                 <li className={cs('header-bottom-nav-list-item header-bottom-nav-list-item-product')}>
                                     <Link to={configPaths.products}>Sản phẩm</Link>

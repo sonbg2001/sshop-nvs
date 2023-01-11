@@ -30,7 +30,7 @@ function getProductBySortAndFilter(sortType, filter = '') {
     let products = getData.products;
     switch (sortType) {
         case 'default':
-            products = getData.products;
+            products = [...getData.products];
             break;
         case 'nameasc':
             products.sort((a, b) => {

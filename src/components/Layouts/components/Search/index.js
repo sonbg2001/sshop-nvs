@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import configPaths from '~/routes/configPaths';
+
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     return (
@@ -21,4 +22,4 @@ function Search() {
     );
 }
 
-export default Search;
+export default memo(Search);

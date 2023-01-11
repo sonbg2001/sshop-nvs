@@ -89,7 +89,7 @@ function Products() {
                 <div className="product-top">
                     <div className="product-top-title">
                         <h3 className="heading-page">
-                            <a href="/">Trang chủ</a> / <span>Sản phẩm</span>
+                            <Link to="/">Trang chủ</Link> / <span>Sản phẩm</span>
                         </h3>
                     </div>
                     <div className="product-top-sort-by">

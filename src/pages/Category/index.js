@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Category() {
     return (
         <section className="category">
@@ -5,7 +7,7 @@ function Category() {
                 <div className="product-top">
                     <div className="product-top-title">
                         <h3 className="heading-page">
-                            <a href="index.html">Trang chủ</a> / <span>Loại sản phẩm</span>
+                            <Link to="/">Trang chủ</Link> / <span>Loại sản phẩm</span>
                         </h3>
                     </div>
                 </div>

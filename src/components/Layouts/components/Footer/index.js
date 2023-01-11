@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import configPaths from '~/routes/configPaths';
 function Footer() {
     return (
@@ -12,7 +13,7 @@ function Footer() {
                             <div className="footer-content-top-quick-link-content">
                                 <ul>
                                     <li>
-                                        <a href="/">Trang chủ</a>
+                                        <Link to="/">Trang chủ</Link>
                                     </li>
                                     <li>
                                         <a href={configPaths.brand}>Giới thiệu</a>

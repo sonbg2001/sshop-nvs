@@ -119,14 +119,14 @@ function ProductDetail() {
                                 <strong className="comment-user">
                                     Nguyễn Văn Sơn
                                     <div className="comment-user-star">
-                                        <i style={{ color: 'black', 'font-weight': '400', fontStyle: 'italic' }}>
+                                        <i style={{ color: 'black', fontWeight: '400', fontStyle: 'italic' }}>
                                             Đánh giá :{' '}
                                         </i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-regular fa-star-half-stroke"></i>
-                                        <i class="fa-regular fa-star"></i>
+                                        <i className="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star"></i>
+                                        <i className="fa-regular fa-star-half-stroke"></i>
+                                        <i className="fa-regular fa-star"></i>
                                     </div>
                                 </strong>
 
@@ -147,14 +147,14 @@ function ProductDetail() {
                                 <strong className="comment-user">
                                     Bố Nguyễn Văn Sơn
                                     <div className="comment-user-star">
-                                        <i style={{ color: 'black', 'font-weight': '400', fontStyle: 'italic' }}>
+                                        <i style={{ color: 'black', fontWeight: '400', fontStyle: 'italic' }}>
                                             Đánh giá :{' '}
                                         </i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-regular fa-star-half-stroke"></i>
-                                        <i class="fa-regular fa-star"></i>
+                                        <i className="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star"></i>
+                                        <i className="fa-regular fa-star-half-stroke"></i>
+                                        <i className="fa-regular fa-star"></i>
                                     </div>
                                 </strong>
                                 <i className="comment-time">12/02/2002</i>
@@ -176,14 +176,14 @@ function ProductDetail() {
                                 <strong className="comment-user">
                                     Mẹ Nguyễn Văn Sơn
                                     <div className="comment-user-star">
-                                        <i style={{ color: 'black', 'font-weight': '400', fontStyle: 'italic' }}>
+                                        <i style={{ color: 'black', fontWeight: '400', fontStyle: 'italic' }}>
                                             Đánh giá :{' '}
                                         </i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-regular fa-star-half-stroke"></i>
-                                        <i class="fa-regular fa-star"></i>
+                                        <i className="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star"></i>
+                                        <i className="fa-regular fa-star-half-stroke"></i>
+                                        <i className="fa-regular fa-star"></i>
                                     </div>
                                 </strong>
                                 <i className="comment-time">12/02/2002</i>
@@ -206,14 +206,14 @@ function ProductDetail() {
                                 <strong className="comment-user">
                                     Em gái Nguyễn Văn Sơn
                                     <div className="comment-user-star">
-                                        <i style={{ color: 'black', 'font-weight': '400', fontStyle: 'italic' }}>
+                                        <i style={{ color: 'black', fontWeight: '400', fontStyle: 'italic' }}>
                                             Đánh giá :{' '}
                                         </i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-regular fa-star-half-stroke"></i>
-                                        <i class="fa-regular fa-star"></i>
+                                        <i className="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star"></i>
+                                        <i className="fa-regular fa-star-half-stroke"></i>
+                                        <i className="fa-regular fa-star"></i>
                                     </div>
                                 </strong>
                                 <i className="comment-time">12/02/2002</i>
